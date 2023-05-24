@@ -1,32 +1,31 @@
 """Calculate triangles for network in https://snap.stanford.edu/data/ego-Facebook.html."""
-from __future__ import annotations
 from collections import defaultdict
 
 import csv
+import os
 from pathlib import Path
+from typing import Dict, List, Optional
 
-Graph = dict[str, list[str]]
+Graph = Dict[str, List[str]]
 
 
-def load_graph(p: Path) -> Graph:
+def load_graph(p: Optional[Path] = None) -> Graph:
     """Load undirected graph from CSV file with ` ` delimiter."""
+    data = p or Path(os.environ["FB_DATA"])
     nodes = defaultdict(list)
-    with p.open() as f:
+    with data.open() as f:
         directed = list(csv.reader(f, delimiter=" "))
 
     undirected = directed + [[b, a] for [a, b] in directed]
     for node_id, neighbor in undirected:
         nodes[node_id].append(neighbor)
-        
-    print("number of nodes:", len(nodes))
-    print("number of edges:", len(directed))
     return nodes
 
 
 def calc_triangles(graph: Graph) -> int:
     """
     Calculate number of triangles.
-    
+
     0. Track nodes visited and number of triangles
     1. For each node:
         a. Track neighbors visited
@@ -40,10 +39,10 @@ def calc_triangles(graph: Graph) -> int:
     2. Add node to nodes visited
     """
     num_triangles: int = 0
-    
-    visited: list[str] = []
+
+    visited: List[str] = []
     for node in graph.keys():
-        neighbors_visited: list[str] = []
+        neighbors_visited: List[str] = []
         for neighbor in graph[node]:
             if neighbor not in visited:
                 for far_neighbor in graph[neighbor]:
@@ -58,10 +57,27 @@ def calc_triangles(graph: Graph) -> int:
     return num_triangles
 
 
+def main(data: Optional[Path] = None) -> int:
+    """Calculate triangles for graph in file."""
+
+    nodes = load_graph(data)
+    return calc_triangles(nodes)
+
+def _about(p: Path) -> None:
+    """Information about the graph."""
+    with p.open() as f:
+        edges = list(csv.reader(f, delimiter=" "))
+    nodes = {}
+    for e in edges:
+        nodes |= set(e)
+
+    print("number of nodes:", len(nodes))
+    print("number of edges:", len(edges))
+
 if __name__ == "__main__":
     fb_data = Path(__file__).parents[1] / "data" / "facebook_combined.txt"
-    nodes = load_graph(fb_data)
-    n_triangles = calc_triangles(nodes)
+    _about(fb_data)
     
+    n_triangles = main(fb_data)
     print("number of triangles:", n_triangles)
     assert n_triangles == 1612010
