@@ -1,0 +1,12 @@
+[tool.pdm]
+
+[project]
+name = ""
+version = ""
+description = ""
+authors = [
+    {name = "Murilo Cunha", email = "murilo@dataroots.io"},
+]
+dependencies = []
+requires-python = ">=3.9"
+license = {text = "MIT"}
