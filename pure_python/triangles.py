@@ -4,21 +4,24 @@ from collections import defaultdict
 import csv
 import os
 from pathlib import Path
-from typing import Dict, List, Optional
+import time
+from typing import List, Optional, Set, Union
+from typing import DefaultDict
 
-Graph = Dict[str, List[str]]
+NeighborNodes = List[int]
+Graph = DefaultDict[int, NeighborNodes]
 
 
-def load_graph(p: Optional[Path] = None) -> Graph:
+def load_graph(p: Optional[Union[Path, str]] = None) -> Graph:
     """Load undirected graph from CSV file with ` ` delimiter."""
     data = p or Path(os.environ["FB_DATA"])
-    nodes = defaultdict(list)
+    nodes: Graph = defaultdict(list)
     with data.open() as f:
         directed = list(csv.reader(f, delimiter=" "))
 
     undirected = directed + [[b, a] for [a, b] in directed]
     for node_id, neighbor in undirected:
-        nodes[node_id].append(neighbor)
+        nodes[int(node_id)].append(int(neighbor))
     return nodes
 
 
@@ -40,9 +43,9 @@ def calc_triangles(graph: Graph) -> int:
     """
     num_triangles: int = 0
 
-    visited: List[str] = []
+    visited: NeighborNodes = []
     for node in graph.keys():
-        neighbors_visited: List[str] = []
+        neighbors_visited: NeighborNodes = []
         for neighbor in graph[node]:
             if neighbor not in visited:
                 for far_neighbor in graph[neighbor]:
@@ -54,30 +57,36 @@ def calc_triangles(graph: Graph) -> int:
                         num_triangles += 1
             neighbors_visited.append(neighbor)
         visited.append(node)
+
     return num_triangles
 
 
-def main(data: Optional[Path] = None) -> int:
+def load_and_calc(data: Optional[Path] = None) -> int:
     """Calculate triangles for graph in file."""
 
     nodes = load_graph(data)
     return calc_triangles(nodes)
 
+
 def _about(p: Path) -> None:
     """Information about the graph."""
     with p.open() as f:
         edges = list(csv.reader(f, delimiter=" "))
-    nodes = {}
+    nodes: Set[str] = set()
     for e in edges:
         nodes |= set(e)
 
     print("number of nodes:", len(nodes))
     print("number of edges:", len(edges))
 
-if __name__ == "__main__":
+
+def main():
     fb_data = Path(__file__).parents[1] / "data" / "facebook_combined.txt"
-    _about(fb_data)
-    
-    n_triangles = main(fb_data)
-    print("number of triangles:", n_triangles)
+
+    start = time.time()
+    n_triangles = load_and_calc(fb_data)
+    stop = time.time()
+
+    print("number of triangles: ", n_triangles)
+    print(f"time: {stop - start:.2f}s")
     assert n_triangles == 1612010

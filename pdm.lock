@@ -8,6 +8,15 @@ requires_python = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
 summary = "The Cython compiler for writing C extensions in the Python language."
 
 [[package]]
+name = "maturin"
+version = "1.0.0"
+requires_python = ">=3.7"
+summary = "Build and publish crates with pyo3, rust-cpython and cffi bindings as well as rust binaries as python packages"
+dependencies = [
+    "tomli>=1.1.0; python_version < \"3.11\"",
+]
+
+[[package]]
 name = "mypy"
 version = "1.3.0"
 requires_python = ">=3.7"
@@ -45,7 +54,7 @@ summary = "Backported and Experimental Type Hints for Python 3.7+"
 [metadata]
 lock_version = "4.2"
 groups = ["default", "dev"]
-content_hash = "sha256:9b8be100f03c5df69315a671dd45a771cb43c3518f64721c40e8402b81864b52"
+content_hash = "sha256:c23f414b511aed0287bbdf97136a93c2d0c3d8f6d8b591f2c1021d06910469bd"
 
 [metadata.files]
 "cython 3.0.0b3" = [
@@ -99,6 +108,21 @@ content_hash = "sha256:9b8be100f03c5df69315a671dd45a771cb43c3518f64721c40e8402b8
     {url = "https://files.pythonhosted.org/packages/f0/c4/8b8551150dcc14bca3326b3ff7c0aedf392dbc60d86445fdbc4c0e75f451/Cython-3.0.0b3-cp39-cp39-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:47818f78bcd7a691acda47ed150b75cb80236f06337cc91086e85308896359be"},
     {url = "https://files.pythonhosted.org/packages/fd/23/caaec2bb617b80053fe5a63ea9259a86f8980421e27ca5147c5010634712/Cython-3.0.0b3-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:ae06a8577a6b170aa42bd3a43c72c62f85f93f1b341ff563d45555e966f0036b"},
     {url = "https://files.pythonhosted.org/packages/fe/6e/3dfd3b670e8469246a481367e737091db54baa802585e584a034516ff0a2/Cython-3.0.0b3-cp39-cp39-macosx_10_9_x86_64.whl", hash = "sha256:a5e65653999912bcda7febf1b1c66ee1536e487e76b43c728cb8bd894a31e1d7"},
+]
+"maturin 1.0.0" = [
+    {url = "https://files.pythonhosted.org/packages/06/53/943b208943cb659f5e35ef1789d916ff4cdfc99ad734c93088fcb9e85ee7/maturin-1.0.0-py3-none-win32.whl", hash = "sha256:3545534a64109e8bae3ced3240d96663e73e822fd7f63919ad5894003af739ba"},
+    {url = "https://files.pythonhosted.org/packages/17/18/af52b940efa5897cb2aab73cd2fe43742ee15871f8358fc18cd0f28e2175/maturin-1.0.0-py3-none-win_amd64.whl", hash = "sha256:a9ac5a0880318408467fd0ab805832e140f0eb9bbe96ead788c48302d07ba612"},
+    {url = "https://files.pythonhosted.org/packages/1c/de/5f56b77179595ba52786eedb081fc6b0f1d0a4496bc77660e8feabd607ec/maturin-1.0.0.tar.gz", hash = "sha256:b58c2369502f42a07ec6aa9749e8db6e10a46bc7fec305751295ebe10970480f"},
+    {url = "https://files.pythonhosted.org/packages/2a/21/18f4721253ccfdf8446b534f21342535e1b5b6ae55b51d255604cbd2e48f/maturin-1.0.0-py3-none-linux_armv6l.whl", hash = "sha256:66eb90600d4a454505773255e2f8549e703e0b9a5ed3667701f65ff53136166b"},
+    {url = "https://files.pythonhosted.org/packages/4d/ca/7ee4deb791880fdd6fe30459bb032c0f8100f925575935b6fa6e177653fc/maturin-1.0.0-py3-none-manylinux_2_12_i686.manylinux2010_i686.musllinux_1_1_i686.whl", hash = "sha256:ec50e4c64ba07a7f8630e28a64aea0767aaa83abe14da30671b00bc7d8f42d63"},
+    {url = "https://files.pythonhosted.org/packages/69/ed/4ffa4fe907242705aab68a66d8cb985f83cdb4dc4cb0c9b1df8102808da5/maturin-1.0.0-py3-none-manylinux_2_17_aarch64.manylinux2014_aarch64.musllinux_1_1_aarch64.whl", hash = "sha256:cb0bc8fb2e24d7e122bfae7791ee05f410094c1cf4d21feeaf73d00d98a300d2"},
+    {url = "https://files.pythonhosted.org/packages/85/fd/83469dd6488b0bad89f17b8e848fb3ae53df05208e814acf7b5816691889/maturin-1.0.0-py3-none-manylinux_2_17_ppc64le.manylinux2014_ppc64le.musllinux_1_1_ppc64le.whl", hash = "sha256:76514de4144bd5c251d49fd6659bf839291da8091bf61cc27b67c082bf03df04"},
+    {url = "https://files.pythonhosted.org/packages/b9/e1/6581eca15751222aaf8da6a0bcbde280e70b9309c6edbed75a601205087a/maturin-1.0.0-py3-none-manylinux_2_12_x86_64.manylinux2010_x86_64.musllinux_1_1_x86_64.whl", hash = "sha256:d50d0653e022a97c2d44488bb6115a1aa6041e580c7f36947bd4798eb6eb4270"},
+    {url = "https://files.pythonhosted.org/packages/b9/f4/6fddf59d6d03c7fccf7f1ea171f3a6a844744948c5bedc9598f5aa0ed520/maturin-1.0.0-py3-none-manylinux_2_17_armv7l.manylinux2014_armv7l.musllinux_1_1_armv7l.whl", hash = "sha256:3f373225e888e849f07eb410f564be6d19d122d0dd53c40fa47aec6d271d3767"},
+    {url = "https://files.pythonhosted.org/packages/be/d5/bec7bddd6fa2c8aaeec5fed23fec200fc4ae203ede4c66315556f6aab722/maturin-1.0.0-py3-none-macosx_10_9_x86_64.macosx_11_0_arm64.macosx_10_9_universal2.whl", hash = "sha256:6fa2d633e42d41a2497941307cd67e2f14c4fabd31ba3868d06e70a4b609091b"},
+    {url = "https://files.pythonhosted.org/packages/cc/96/d1e7d31099e268f1d03b8e08fd1b84de6ab23a671e8f05d355a243123cda/maturin-1.0.0-py3-none-manylinux_2_17_s390x.manylinux2014_s390x.whl", hash = "sha256:6e954631b7ad3a383064197379fb1819572b43dea6ca95216834737984347992"},
+    {url = "https://files.pythonhosted.org/packages/dc/61/42e46ef5acfba20207c4f20c882524b47fd0d578e319c00d91a38d126548/maturin-1.0.0-py3-none-macosx_10_7_x86_64.whl", hash = "sha256:d8d194968013af3e7204870b4eb0c39176dd8439d8b19eb6a58ff36896c870a6"},
+    {url = "https://files.pythonhosted.org/packages/ff/44/0e8905cfcd3513fd404a80f4817bb921a7166e43be37bb7983ad06668210/maturin-1.0.0-py3-none-win_arm64.whl", hash = "sha256:c3f34639655ff62728fbb70fb452f30f5e2100887dd10aec2128bd0d64c08f2b"},
 ]
 "mypy 1.3.0" = [
     {url = "https://files.pythonhosted.org/packages/09/7b/8eb0d648352c61b08cb364d278b5c12c3f1c5841724fdd2929d7172b7eaf/mypy-1.3.0-cp39-cp39-musllinux_1_1_x86_64.whl", hash = "sha256:f9dca1e257d4cc129517779226753dbefb4f2266c4eaad610fc15c6a7e14283e"},
