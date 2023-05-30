@@ -1,7 +1,9 @@
 [tool.pdm]
 
 [tool.pdm.dev-dependencies]
-dev = []
+dev = [
+    "pip>=23.1.2",
+]
 
 [tool.pdm.scripts]
 compile   = {composite = ["cythonize", "mypyze"]}

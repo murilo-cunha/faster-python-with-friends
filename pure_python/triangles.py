@@ -5,14 +5,14 @@ import csv
 import os
 from pathlib import Path
 import time
-from typing import List, Optional, Set, Union
+from typing import List, Optional, Set
 from typing import DefaultDict
 
 NeighborNodes = List[int]
 Graph = DefaultDict[int, NeighborNodes]
 
 
-def load_graph(p: Optional[Union[Path, str]] = None) -> Graph:
+def load_graph(p: Optional[Path] = None) -> Graph:
     """Load undirected graph from CSV file with ` ` delimiter."""
     data = p or Path(os.environ["FB_DATA"])
     nodes: Graph = defaultdict(list)
@@ -81,10 +81,8 @@ def _about(p: Path) -> None:
 
 
 def main():
-    fb_data = Path(__file__).parents[1] / "data" / "facebook_combined.txt"
-
     start = time.time()
-    n_triangles = load_and_calc(fb_data)
+    n_triangles = load_and_calc()
     stop = time.time()
 
     print("number of triangles: ", n_triangles)
