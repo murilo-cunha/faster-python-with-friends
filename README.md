@@ -1,6 +1,6 @@
 # Python Speedups
 
-> Comparing Python's performance speedup alternatives
+> Investigating and comparing Python's performance speedup alternatives
 
 ## Overview
 
