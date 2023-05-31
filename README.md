@@ -2,6 +2,10 @@
 
 > Comparing Python's performance speedup alternatives
 
+## Overview
+
+Note: values may change - local setup was experimental and unstable.
+
 | method      | time    | relative |
 | ----------- | ------- | -------- |
 | python 3.9  | 126.06s | 1        |
