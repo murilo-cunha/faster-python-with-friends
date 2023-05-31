@@ -14,7 +14,7 @@ Note: values may change - local setup was experimental and unstable.
 | cython      | 121.45s | 0.96     |
 | mypyc       | 106.56s | 0.85     |
 | pyo3        | 4.59s   | 0.036    |
-| mojo*       | -       |          |
+| mojo*       | ???     | ???      |
 
 
 ## Setup
@@ -67,3 +67,8 @@ cd rust_python/
 maturin develop --release
 python -c "from rust_python.triangles import main; main();"
 ```
+
+## Mojo 🔥
+
+Mojo not open source yet (June, 2023).
+Could not compare performance to regular Python - imports, different syntax, etc.
