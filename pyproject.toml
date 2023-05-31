@@ -5,15 +5,6 @@ dev = [
     "pip>=23.1.2",
 ]
 
-[tool.pdm.scripts]
-compile   = {composite = ["cythonize", "mypyze"]}
-cythonize = {cmd = "cythonize --3str -i scripts/cy_triangles.pyx", help = "compile `cy_triangles.pyx` with `cython`"}
-mypyze    = {shell = "mypyc scripts/my_triangles.pyx && mv my_triangles.*.so scripts/", help = "compile `my_triangles.pyx` with `mypyc`"}
-
-pypytime = {cmd = "time pypy3 -c 'from scripts.py_triangles import main; print(main())'", help = "time exec with `pypy3`", env = {FB_DATA = "data/facebook_combined.txt"}}
-time     = {cmd = "time python -c 'from scripts.{args}_triangles import main; print(main())'", help = "time exec with `python`: specify additional arg `py`, `my` or `cy` for Python, Mypy and Cython", env = {FB_DATA = "data/facebook_combined.txt"}}
-# run-all = {composite = []}
-
 [project]
 authors = [{name = "Murilo Cunha", email = "murilo@dataroots.io"}]
 dependencies = [
