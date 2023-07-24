@@ -1,8 +1,10 @@
-# Python Speedups
+# Faster Python with Friends
 
-> Investigating and comparing Python's performance speedup alternatives
+> Stronger with friends.
 
 ## Overview
+
+In this project we investigate ways in which we can make a Python application faster. See below a comparison of different methods.
 
 Note: values may change - local setup was experimental and unstable.
 
