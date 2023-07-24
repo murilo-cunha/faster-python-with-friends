@@ -1,20 +1,18 @@
-"""Calculate triangles for network in https://snap.stanford.edu/data/ego-Facebook.html."""
-from collections import defaultdict
+"""
+Calculate triangles for network.
 
+I.e.: use graph from https://snap.stanford.edu/data/ego-Facebook.html.
+"""
 import csv
-import os
+from collections import defaultdict
 from pathlib import Path
-import time
-from typing import List, Optional, Set
-from typing import DefaultDict
 
-NeighborNodes = List[int]
-Graph = DefaultDict[int, NeighborNodes]
+NeighborNodes = list[int]
+Graph = defaultdict[int, NeighborNodes]
 
 
-def load_graph(p: Optional[Path] = None) -> Graph:
+def load_graph(data: Path) -> Graph:
     """Load undirected graph from CSV file with ` ` delimiter."""
-    data = p or Path(os.environ["FB_DATA"])
     nodes: Graph = defaultdict(list)
     with data.open() as f:
         directed = list(csv.reader(f, delimiter=" "))
@@ -44,7 +42,7 @@ def calc_triangles(graph: Graph) -> int:
     num_triangles: int = 0
 
     visited: NeighborNodes = []
-    for node in graph.keys():
+    for node in graph:
         neighbors_visited: NeighborNodes = []
         for neighbor in graph[node]:
             if neighbor not in visited:
@@ -61,30 +59,16 @@ def calc_triangles(graph: Graph) -> int:
     return num_triangles
 
 
-def load_and_calc(data: Optional[Path] = None) -> int:
+def load_and_calc(data: Path) -> int:
     """Calculate triangles for graph in file."""
-
     nodes = load_graph(data)
     return calc_triangles(nodes)
 
 
-def _about(p: Path) -> None:
+def graph_info(p: Path) -> None:
     """Information about the graph."""
     with p.open() as f:
         edges = list(csv.reader(f, delimiter=" "))
-    nodes: Set[str] = set()
+    nodes: set[str] = set()
     for e in edges:
         nodes |= set(e)
-
-    print("number of nodes:", len(nodes))
-    print("number of edges:", len(edges))
-
-
-def main():
-    start = time.time()
-    n_triangles = load_and_calc()
-    stop = time.time()
-
-    print("number of triangles: ", n_triangles)
-    print(f"time: {stop - start:.2f}s")
-    assert n_triangles == 1612010
