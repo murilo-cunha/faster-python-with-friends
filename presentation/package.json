@@ -1,0 +1,16 @@
+{
+  "name": "faster-python-with-friends",
+  "private": true,
+  "scripts": {
+    "build": "slidev build",
+    "dev": "slidev --open",
+    "export": "slidev export"
+  },
+  "dependencies": {
+    "@slidev/cli": "^0.42.5",
+    "@slidev/theme-default": "latest",
+    "@slidev/theme-seriph": "latest",
+    "qrious": "^4.0.2",
+    "slidev-theme-meetup": "^1.4.0"
+  }
+}
