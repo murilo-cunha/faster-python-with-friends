@@ -123,7 +123,7 @@ dependencies = [
 lock_version = "4.2"
 cross_platform = true
 groups = ["default", "dev"]
-content_hash = "sha256:2168d76368e63438d5e36ba7eeddd2b535ccd786cd8228c19c9014a0f9540303"
+content_hash = "sha256:0a212ccd57b593c644a1b38eb0726c7068e0fa323d0923114621405152235e75"
 
 [metadata.files]
 "cfgv 3.3.1" = [
