@@ -1,6 +1,5 @@
 [tool.pdm.scripts]
-cleanup = {shell = "rm -rf src/{cy,py,build}/*.{h,c,so}"}
-# cleanup = {shell = "rm -rf src/cy/build/*/*.{h,c,so}"}
+cleanup = {shell = "rm -rf src/{build,py.egg-info} src/cy/{build/,*.{h,c,so}} src/py/*.{h,c,so}"}
 cy      = "cythonize -i src/cy"
 fib     = "python scripts/time_fib.py 40"
 tri     = "python scripts/time_tri.py data/facebook_combined.txt"
