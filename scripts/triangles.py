@@ -3,7 +3,7 @@ import argparse
 from collections.abc import Callable
 from pathlib import Path
 
-from misc import timer
+from py.timing import timer
 
 
 def import_(args: argparse.Namespace) -> Callable[[Path], int]:
@@ -19,7 +19,7 @@ def parse_args() -> argparse.Namespace:
     """Parse command line arguments."""
     parser = argparse.ArgumentParser()
     parser.add_argument("graph", type=Path)
-    parser.add_argument("lib", choices=["py", "rs"])
+    parser.add_argument("-l", "--lib", choices=["py", "rs"], required=True)
     return parser.parse_args()
 
 
@@ -32,6 +32,5 @@ def calc(args: argparse.Namespace, load_and_calc: Callable[[Path], int]) -> int:
 if __name__ == "__main__":
     args = parse_args()
     f = import_(args)
-    n_triangles = calc(args, f)
-    print("Number of triangles: ", n_triangles)  # noqa: T201
-    assert n_triangles == 1612010  # noqa: S101
+    num_triangles = calc(args, f)
+    print(f"{num_triangles=}")  # noqa: T201

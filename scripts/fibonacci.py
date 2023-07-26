@@ -1,8 +1,9 @@
 """Time the fibonacci function."""
 import argparse
+import sys
 from collections.abc import Callable
 
-from misc import timer
+from py.timing import timer
 
 
 def import_(args: argparse.Namespace) -> Callable[[int], int]:
@@ -18,7 +19,7 @@ def parse_args() -> argparse.Namespace:
     """Parse command line arguments."""
     parser = argparse.ArgumentParser()
     parser.add_argument("num", type=int)
-    parser.add_argument("lib", choices=["py", "rs"])
+    parser.add_argument("-l", "--lib", choices=["py", "rs"], required=True)
     return parser.parse_args()
 
 
@@ -29,6 +30,7 @@ def calc(args: argparse.Namespace, fib: Callable[[int], int]) -> int:
 
 
 if __name__ == "__main__":
+    print("version:", sys.version)  # noqa: T201
     args = parse_args()
     f = import_(args)
     fib_num = calc(args, f)

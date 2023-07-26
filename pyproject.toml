@@ -1,4 +1,6 @@
-[tool.pdm]
+[tool.pdm.scripts]
+fib = "python scripts/fibonacci.py 40"
+tri = "python scripts/triangles.py data/facebook_combined.txt"
 
 [tool.pdm.dev-dependencies]
 dev = [

@@ -1,6 +1,6 @@
 """Time function utilities."""
 import time
-from abc.collections import Callable
+from collections.abc import Callable
 from functools import wraps
 from typing import Any
 
@@ -10,9 +10,10 @@ def timer(f: Callable) -> Callable:
 
     @wraps(f)
     def wrapper(*args: Any, **kwargs: Any) -> Any:  # noqa: ANN401
-        time.perf_counter()
+        start = time.perf_counter()
         result = f(*args, **kwargs)
-        time.perf_counter()
+        end = time.perf_counter()
+        print(f"`{f.__name__}` took {end - start:0.4f} seconds")  # noqa: T201
         return result
 
     return wrapper

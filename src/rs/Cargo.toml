@@ -9,4 +9,4 @@ crate-type = ["cdylib"]
 name       = "rs"
 
 [dependencies]
-pyo3 = "0.18.3"
+pyo3 = "0.19.1"
