@@ -8,8 +8,9 @@ classifiers = [
     "Programming Language :: Python :: Implementation :: CPython",
     "Programming Language :: Python :: Implementation :: PyPy",
 ]
-name = "rust_python"
+name = "rs"
 requires-python = ">=3.9"
+version = "0.0.0"
 
 [tool.maturin]
 features = ["pyo3/extension-module"]
