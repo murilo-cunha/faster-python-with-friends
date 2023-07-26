@@ -16,3 +16,11 @@ repos:
       rev: v0.942
       hooks:
           - id: mypy
+    - repo: https://github.com/pdm-project/pdm
+      rev: 2.8.1
+      hooks:
+          - id: pdm-lock-check
+            stages: ["pre-push"]
+          - id: pdm-export
+            stages: ["pre-push"]
+            args: [">", "requirements.txt"]
