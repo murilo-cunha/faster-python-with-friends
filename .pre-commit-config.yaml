@@ -25,4 +25,4 @@ repos:
             stages: [pre-push]
           - id: pdm-export
             stages: [pre-push]
-            args: [">", "requirements.txt"]
+            args: ["-o", "requirements.txt"]

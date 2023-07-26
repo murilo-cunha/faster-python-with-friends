@@ -9,10 +9,10 @@ from misc import timer
 def import_(args: argparse.Namespace) -> Callable[[Path], int]:
     """Dynamically import the module."""
     if args.lib == "py":
-        from py.triangles import load_and_calc
+        from py.triangles import load_and_calc as f
     elif args.lib == "rs":
-        from rs.triangles import load_and_calc
-    return load_and_calc
+        from rs.triangles import load_and_calc as f
+    return f
 
 
 def parse_args() -> argparse.Namespace:
