@@ -1,3 +1,5 @@
+default_install_hook_types: [pre-commit, pre-push]
+
 repos:
     - repo: https://github.com/pre-commit/pre-commit-hooks
       rev: v3.2.0
@@ -20,7 +22,7 @@ repos:
       rev: 2.8.1
       hooks:
           - id: pdm-lock-check
-            stages: ["pre-push"]
+            stages: [pre-push]
           - id: pdm-export
-            stages: ["pre-push"]
+            stages: [pre-push]
             args: [">", "requirements.txt"]
