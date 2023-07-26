@@ -9,10 +9,10 @@ from py.timing import timer
 def import_(args: argparse.Namespace) -> Callable[[int], int]:
     """Dynamically import the module."""
     if args.lib == "py":
-        pass
-    if args.lib == "cy":
-        pass
-    if args.lib == "rs":
+        from py.fibonacci import fib as f
+    elif args.lib == "cy":
+        from cy.fibonacci import fib as f
+    elif args.lib == "rs":
         from rs.fibonacci import fib as f
     return f
 

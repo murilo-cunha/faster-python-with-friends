@@ -82,6 +82,7 @@ layout: twocols
 
 - fibbonacci + approach
 - triannglee + approach
+- show project structure
 
 ---
 
@@ -94,6 +95,15 @@ layout: twocols
 - Cython 3.0
 - Aims to be a Superset of Python
 - `cdef`, `cimport`, ...
+
+- show typing differences
+- show snippet of project sstructure after cythonize
+  - mention that if .so is available, it will be used
+
+- demo:
+  - cy without cythonize is the same as python performance
+  - cythonize py + run py
+  - cythonize cy + run cy
 
 
 ---
