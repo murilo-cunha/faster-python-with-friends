@@ -85,8 +85,26 @@ layout: twocols
 
 ---
 
+# Cython
+
+- https://cython.readthedocs.io/en/latest/src/tutorial/pure.html?highlight=526#managing-the-global-interpreter-lock
+- https://cython.readthedocs.io/en/latest/src/tutorial/pure.html?highlight=526#augmenting-pxd
+- https://www.infoworld.com/article/3702888/cython-30-the-next-generation-of-python-at-the-speed-of-c.html
+- https://cython.readthedocs.io/en/latest/src/quickstart/cythonize.html
+- Cython 3.0
+- Aims to be a Superset of Python
+- `cdef`, `cimport`, ...
+
+
+---
 # Approaches...
 
+---
+
+# Bindings
+
+- PyO3
+- PyBind
 
 ---
 

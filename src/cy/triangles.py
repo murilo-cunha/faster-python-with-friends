@@ -3,24 +3,12 @@ Calculate triangles for network.
 
 I.e.: use graph from https://snap.stanford.edu/data/ego-Facebook.html.
 """
-import csv
 from collections import defaultdict
-from pathlib import Path
 
-NeighborNodes = list[int]
-Graph = defaultdict[int, NeighborNodes]
+import cython
 
-
-def load_graph(data: Path) -> Graph:
-    """Load undirected graph from CSV file with ` ` delimiter."""
-    nodes: Graph = defaultdict(list)
-    with data.open() as f:
-        directed = list(csv.reader(f, delimiter=" "))
-
-    undirected = directed + [[b, a] for [a, b] in directed]
-    for node_id, neighbor in undirected:
-        nodes[int(node_id)].append(int(neighbor))
-    return nodes
+NeighborNodes = list[cython.int]
+Graph = defaultdict[cython.int, NeighborNodes]
 
 
 def calc_triangles(graph: Graph) -> int:
@@ -57,12 +45,3 @@ def calc_triangles(graph: Graph) -> int:
         visited.append(node)
 
     return num_triangles
-
-
-def graph_info(p: Path) -> None:
-    """Information about the graph."""
-    with p.open() as f:
-        edges = list(csv.reader(f, delimiter=" "))
-    nodes: set[str] = set()
-    for e in edges:
-        nodes |= set(e)

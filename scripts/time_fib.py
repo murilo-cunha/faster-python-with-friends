@@ -9,8 +9,10 @@ from py.timing import timer
 def import_(args: argparse.Namespace) -> Callable[[int], int]:
     """Dynamically import the module."""
     if args.lib == "py":
-        from py.fibonacci import fib as f
-    elif args.lib == "rs":
+        pass
+    if args.lib == "cy":
+        pass
+    if args.lib == "rs":
         from rs.fibonacci import fib as f
     return f
 
@@ -19,7 +21,7 @@ def parse_args() -> argparse.Namespace:
     """Parse command line arguments."""
     parser = argparse.ArgumentParser()
     parser.add_argument("num", type=int)
-    parser.add_argument("-l", "--lib", choices=["py", "rs"], required=True)
+    parser.add_argument("-l", "--lib", choices=["py", "cy", "rs"], required=True)
     return parser.parse_args()
 
 
