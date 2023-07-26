@@ -1,21 +1,23 @@
 [tool.pdm.scripts]
-cleanup = {shell = "rm -rf src/{build,py.egg-info} src/cy/{build/,*.{h,c,so}} src/py/*.{h,c,so}"}
+cleanup = {shell = "rm -rf build/ src/{build,py.egg-info} src/cy/{build/,*.{h,c,so}} src/py/*.{h,c,so}"}
 cy      = "cythonize -i src/cy"
 fib     = "python scripts/time_fib.py 40"
 tri     = "python scripts/time_tri.py data/facebook_combined.txt"
 
 [tool.pdm.dev-dependencies]
-dev = ["pre-commit>=3.3.3", "mypy>=1.3.0", "maturin>=1.0.0"]
+dev = ["pre-commit>=3.3.3"]
 
 [project]
 authors         = [{name = "Murilo Cunha", email = "murilo.k.s.cunha95@gmail.com"}]
-dependencies    = ["Cython>=3.0.0b3"]
+dependencies    = ["mypy>=1.3.0", "maturin>=1.0.0", "Cython>=3.0.0b3"]
 description     = ""
 license         = {text = "MIT"}
 name            = "py"
 requires-python = ">=3.10"
 version         = "0.0.0"
 
+[project.optional-dependencies]
+pypy = ["setuptools>=68.0.0"]
 [tool.ruff]
 fix            = true
 force-exclude  = true

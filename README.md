@@ -8,15 +8,15 @@ In this project we investigate ways in which we can make a Python application fa
 
 Note: values may change - local setup was experimental and unstable.
 
-| method      | time    | relative |
-| ----------- | ------- | -------- |
-| python 3.9  | 126.06s | 1        |
-| python 3.11 | 117.97s | 0.93     |
-| pypy3       | 3.51s   | 0.028    |
-| cython      | 121.45s | 0.96     |
-| mypyc       | 106.56s | 0.85     |
-| pyo3        | 4.59s   | 0.036    |
-| mojo*       | ???     | ???      |
+| method      | time - fibonacci | time - triangles | relative - fibonacci | relative - triangles | relative - average |
+| ----------- | ---------------- | ---------------- | -------------------- | -------------------- | ------------------ |
+| python 3.9  | 126.06s          | 1                |                      |                      |                    |
+| python 3.11 | 117.97s          | 0.93             |                      |                      |                    |
+| pypy3       | 3.51s            | 0.028            |                      |                      |                    |
+| cython      | 121.45s          | 0.96             |                      |                      |                    |
+| mypyc       | 106.56s          | 0.85             |                      |                      |                    |
+| pyo3        | 4.59s            | 0.036            |                      |                      |                    |
+| mojo*       | ???              | ???              |                      |                      |                    |
 
 
 ## Setup
@@ -30,6 +30,9 @@ pdm install
 
 For updates, uninstall and reinstall `./src/rs`.
 
+Install pypy3.10 -> create venv mannually and run script manually
+
+install dependencies with `pip install .`
 ## Python 3.9
 
 ```bash
