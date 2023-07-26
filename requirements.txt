@@ -14,7 +14,7 @@ pip==23.2.1
 platformdirs==3.9.1
 pre-commit==3.3.3
 pyyaml==6.0.1
-rs @ file:///Users/murilo/Documents/personal/faster-python-with-friends/src/rs
+rs @ ./src/rs
 setuptools==68.0.0
 typing-extensions==4.7.1
 virtualenv==20.24.2

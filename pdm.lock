@@ -66,12 +66,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "pip"
-version = "23.2.1"
-requires_python = ">=3.7"
-summary = "The PyPA recommended tool for installing Python packages."
-
-[[package]]
 name = "platformdirs"
 version = "3.9.1"
 requires_python = ">=3.7"
@@ -136,7 +130,7 @@ dependencies = [
 lock_version = "4.2"
 cross_platform = true
 groups = ["default", "dev"]
-content_hash = "sha256:7724bce2913fbc794bd7985101a9c3abe5273df169b5b92e8b056b7eb3d64ba9"
+content_hash = "sha256:a267e03a7bddfd3e95348a8d4a37871d093d3b368b5c81624fdc8d569109e423"
 
 [metadata.files]
 "cfgv 3.3.1" = [
@@ -265,10 +259,6 @@ content_hash = "sha256:7724bce2913fbc794bd7985101a9c3abe5273df169b5b92e8b056b7eb
 "nodeenv 1.8.0" = [
     {url = "https://files.pythonhosted.org/packages/1a/e6/6d2ead760a9ddb35e65740fd5a57e46aadd7b0c49861ab24f94812797a1c/nodeenv-1.8.0-py2.py3-none-any.whl", hash = "sha256:df865724bb3c3adc86b3876fa209771517b0cfe596beff01a92700e0e8be4cec"},
     {url = "https://files.pythonhosted.org/packages/48/92/8e83a37d3f4e73c157f9fcf9fb98ca39bd94701a469dc093b34dca31df65/nodeenv-1.8.0.tar.gz", hash = "sha256:d51e0c37e64fbf47d017feac3145cdbb58836d7eee8c6f6d3b6880c5456227d2"},
-]
-"pip 23.2.1" = [
-    {url = "https://files.pythonhosted.org/packages/50/c2/e06851e8cc28dcad7c155f4753da8833ac06a5c704c109313b8d5a62968a/pip-23.2.1-py3-none-any.whl", hash = "sha256:7ccf472345f20d35bdc9d1841ff5f313260c2c33fe417f48c30ac46cccabf5be"},
-    {url = "https://files.pythonhosted.org/packages/ba/19/e63fb4e0d20e48bd2167bb7e857abc0e21679e24805ba921a224df8977c0/pip-23.2.1.tar.gz", hash = "sha256:fb0bd5435b3200c602b5bf61d2d43c2f13c02e29c1707567ae7fbc514eb9faf2"},
 ]
 "platformdirs 3.9.1" = [
     {url = "https://files.pythonhosted.org/packages/6d/a7/47b7088a28c8fe5775eb15281bf44d39facdbe4bc011a95ccb89390c2db9/platformdirs-3.9.1-py3-none-any.whl", hash = "sha256:ad8291ae0ae5072f66c16945166cb11c63394c7a3ad1b1bc9828ca3162da8c2f"},

@@ -1,26 +1,26 @@
 [tool.pdm]
 
 [tool.pdm.dev-dependencies]
-dev = ["pip>=23.1.2", "pre-commit>=3.3.3"]
-
-[project]
-authors = [{name = "Murilo Cunha", email = "murilo.k.s.cunha95@gmail.com"}]
-dependencies = [
+dev = [
+    "pre-commit>=3.3.3",
     "Cython>=3.0.0b3",
     "mypy>=1.3.0",
-    "setuptools>=67.8.0",
     "maturin>=1.0.0",
     "rs @ file:///${PROJECT_ROOT}/src/rs",
 ]
-description = ""
-license = {text = "MIT"}
-name = "py"
+
+[project]
+authors         = [{name = "Murilo Cunha", email = "murilo.k.s.cunha95@gmail.com"}]
+dependencies    = []
+description     = ""
+license         = {text = "MIT"}
+name            = "py"
 requires-python = ">=3.10"
-version = "0.0.0"
+version         = "0.0.0"
 
 [tool.ruff]
-fix = true
-force-exclude = true
-ignore = ["EM", "D203", "D212"]
-select = ["ALL"]
+fix            = true
+force-exclude  = true
+ignore         = ["EM", "D203", "D212"]
+select         = ["ALL"]
 target-version = "py310"

@@ -87,7 +87,7 @@ fn load_and_calc(p: Option<&str>) -> PyResult<u32> {
 
 /// Calculating triangles implemented in Rust.
 #[pymodule]
-fn rust_python(_py: Python, m: &PyModule) -> PyResult<()> {
+fn rs(_py: Python, m: &PyModule) -> PyResult<()> {
     m.add_function(wrap_pyfunction!(load_and_calc, m)?)?;
     Ok(())
 }
