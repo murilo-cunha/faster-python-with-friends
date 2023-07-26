@@ -10,10 +10,10 @@ from py.triangles import Graph, load_graph
 def import_(args: argparse.Namespace) -> Callable[[Path], int]:
     """Dynamically import the module."""
     if args.lib == "py":
-        pass
-    if args.lib == "cy":
-        pass
-    if args.lib == "rs":
+        from py.triangles import calc_triangles as f
+    elif args.lib == "cy":
+        from cy.triangles import calc_triangles as f
+    elif args.lib == "rs":
         from rs.triangles import calc_triangles as f
     return f
 
