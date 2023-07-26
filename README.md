@@ -26,6 +26,10 @@ git clone ...
 pdm install
 ```
 
+> `pdm install --dev ./src/rs` or, in a virtual environment, `pip install ./src/rs`
+
+For updates, uninstall and reinstall `./src/rs`.
+
 ## Python 3.9
 
 ```bash

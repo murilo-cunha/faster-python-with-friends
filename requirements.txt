@@ -10,11 +10,9 @@ maturin==1.1.0
 mypy==1.4.1
 mypy-extensions==1.0.0
 nodeenv==1.8.0
-pip==23.2.1
 platformdirs==3.9.1
 pre-commit==3.3.3
 pyyaml==6.0.1
-rs @ ./src/rs
 setuptools==68.0.0
 typing-extensions==4.7.1
 virtualenv==20.24.2

@@ -91,13 +91,6 @@ requires_python = ">=3.6"
 summary = "YAML parser and emitter for Python"
 
 [[package]]
-name = "rs"
-version = "0.0.0"
-requires_python = ">=3.9"
-path = "./src/rs"
-summary = ""
-
-[[package]]
 name = "setuptools"
 version = "68.0.0"
 requires_python = ">=3.7"
@@ -130,7 +123,7 @@ dependencies = [
 lock_version = "4.2"
 cross_platform = true
 groups = ["default", "dev"]
-content_hash = "sha256:a267e03a7bddfd3e95348a8d4a37871d093d3b368b5c81624fdc8d569109e423"
+content_hash = "sha256:2168d76368e63438d5e36ba7eeddd2b535ccd786cd8228c19c9014a0f9540303"
 
 [metadata.files]
 "cfgv 3.3.1" = [
