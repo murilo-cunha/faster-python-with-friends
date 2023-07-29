@@ -15,7 +15,7 @@ Note: values may change - local setup was experimental and unstable.
 | pypy3       | 5.9190s          | 5.9954s          |                      |                      |                    |
 | cython      | 6.8486s          | 127.8094s        |                      |                      |                    |
 | mypyc       | 1.6822s          | 117.1570s        |                      |                      |                    |
-| pyo3        |                  |                  |                      |                      |                    |
+| pyo3        | 0.7056s          | 3.3887s          |                      |                      |                    |
 | mojo*       | ???              | ???              |                      |                      |                    |
 
 
