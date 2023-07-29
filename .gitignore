@@ -121,7 +121,7 @@ celerybeat.pid
 
 # Environments
 .env
-.venv
+.venv*
 env/
 venv/
 ENV/
@@ -161,6 +161,3 @@ cython_debug/
 .pdm-python
 
 *.c
-
-# PyPy venv
-.pypy-venv/
