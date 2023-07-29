@@ -1,5 +1,5 @@
 [tool.pdm.scripts]
-cleanup = {shell = "rm -rf build/ src/{build/,py.egg-info/,*.so} src/cy/{build/,__pycache__,*.{h,c,so}} src/py/{__pycache__/,*.{h,c,so}}"}
+cleanup = {shell = "rm -rf build/ src/{build/,py.egg-info/,*.so} src/cy/{build/,__pycache__,*.{h,c,so}} src/py/{__pycache__/,*.{h,c,so}} src/rs/target/"}
 cy      = "cythonize -i src/cy"
 fib     = "python scripts/time_fib.py 40"
 tri     = "python scripts/time_tri.py data/facebook_combined.txt"
@@ -17,10 +17,8 @@ requires-python = ">=3.10"
 version         = "0.0.0"
 
 [project.optional-dependencies]
-pypy = ["setuptools>=68.0.0"]
-np = [
-    "numpy>=1.25.1",
-]
+np = ["numpy>=1.25.1"]
+
 [tool.ruff]
 fix            = true
 force-exclude  = true
