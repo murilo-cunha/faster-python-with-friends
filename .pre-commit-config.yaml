@@ -23,6 +23,3 @@ repos:
       hooks:
           - id: pdm-lock-check
             stages: [pre-push]
-          - id: pdm-export
-            stages: [pre-push]
-            args: ["-o", "requirements.txt"]
