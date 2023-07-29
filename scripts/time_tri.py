@@ -1,5 +1,6 @@
 """Time the triangles calculation."""
 import argparse
+import sys
 from collections.abc import Callable
 from pathlib import Path
 
@@ -33,6 +34,7 @@ def calc(graph: Graph, calc_triangles: Callable[[Graph], int]) -> int:
 
 
 if __name__ == "__main__":
+    print("version:", sys.version)  # noqa: T201
     args = parse_args()
     f = import_(args)
     nodes = load_graph(args.graph)
