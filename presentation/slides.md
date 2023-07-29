@@ -104,7 +104,18 @@ layout: twocols
   - cy without cythonize is the same as python performance
   - cythonize py + run py
   - cythonize cy + run cy
+- could not run with cythonn outside type hintts
 
+---
+
+# Pypy
+
+- https://pypy.org/performance.html
+
+```bash
+Building wheels for collected packages: numpy, py
+  Building wheel for numpy (pyproject.toml) ... -
+```
 
 ---
 # Approaches...
