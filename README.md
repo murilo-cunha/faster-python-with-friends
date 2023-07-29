@@ -10,12 +10,12 @@ Note: values may change - local setup was experimental and unstable.
 
 | method      | time - fibonacci | time - triangles | relative - fibonacci | relative - triangles | relative - average |
 | ----------- | ---------------- | ---------------- | -------------------- | -------------------- | ------------------ |
-| python 3.9  | 126.06s          | 1                |                      |                      |                    |
-| python 3.11 | 117.97s          | 0.93             |                      |                      |                    |
-| pypy3       | 3.51s            | 0.028            |                      |                      |                    |
-| cython      | 121.45s          | 0.96             |                      |                      |                    |
-| mypyc       | 106.56s          | 0.85             |                      |                      |                    |
-| pyo3        | 4.59s            | 0.036            |                      |                      |                    |
+| python 3.10 | 31.8979s         | 133.9575s        | 1                    | 1                    | 1                  |
+| python 3.11 | 19.1536s         | 123.0167s        |                      |                      |                    |
+| pypy3       | 5.9190s          | 5.9954s          |                      |                      |                    |
+| cython      | 6.8486s          | 127.8094s        |                      |                      |                    |
+| mypyc       | 1.6822s          | 117.1570s        |                      |                      |                    |
+| pyo3        |                  |                  |                      |                      |                    |
 | mojo*       | ???              | ???              |                      |                      |                    |
 
 
