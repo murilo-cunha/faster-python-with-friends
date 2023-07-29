@@ -13,8 +13,10 @@ def import_(args: argparse.Namespace) -> Callable[[int], int]:
     elif args.lib == "cy":
         from cy.fibonacci import fib as f
     elif args.lib == "rs":
-        from rs.fibonacci import fib as f
-    return f
+        import rs  # https://github.com/PyO3/pyo3/issues/759
+
+        f = rs.fibonacci.fib
+    return f  # noqa: RET504
 
 
 def parse_args() -> argparse.Namespace:

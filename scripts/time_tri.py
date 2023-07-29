@@ -15,8 +15,10 @@ def import_(args: argparse.Namespace) -> Callable[[Path], int]:
     elif args.lib == "cy":
         from cy.triangles import calc_triangles as f
     elif args.lib == "rs":
-        from rs.triangles import calc_triangles as f
-    return f
+        import rs  # https://github.com/PyO3/pyo3/issues/759
+
+        f = rs.triangles.calc_triangles
+    return f  # noqa: RET504
 
 
 def parse_args() -> argparse.Namespace:
