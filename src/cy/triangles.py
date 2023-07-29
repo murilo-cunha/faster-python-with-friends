@@ -7,11 +7,8 @@ from collections import defaultdict
 
 import cython
 
-NeighborNodes = list[cython.int]
-Graph = defaultdict[cython.int, NeighborNodes]
 
-
-def calc_triangles(graph: Graph) -> int:
+def calc_triangles(graph: defaultdict[cython.int, list[cython.int]]) -> int:
     """
     Calculate number of triangles.
 
@@ -29,9 +26,9 @@ def calc_triangles(graph: Graph) -> int:
     """
     num_triangles: int = 0
 
-    visited: NeighborNodes = []
+    visited: list[cython.int] = []
     for node in graph:
-        neighbors_visited: NeighborNodes = []
+        neighbors_visited: list[cython.int] = []
         for neighbor in graph[node]:
             if neighbor not in visited:
                 for far_neighbor in graph[neighbor]:
