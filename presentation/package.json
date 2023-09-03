@@ -11,6 +11,7 @@
     "@slidev/theme-default": "latest",
     "@slidev/theme-seriph": "latest",
     "qrious": "^4.0.2",
+    "slidev-addon-asciinema": "^0.1.8",
     "slidev-theme-meetup": "^1.4.0"
   }
 }
