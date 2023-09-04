@@ -55,10 +55,30 @@ li:not(li:first-child) {
 
 
 ---
+hideInToc: true
+layout: twocols
+---
 
 # Today
 
+::left::
+
 <Toc/>
+
+::right::
+
+<br/>
+<br/>
+
+<img src="https://media.giphy.com/media/Dh5q0sShxgp13DwrvG/giphy.gif" rounded-lg  shadow />
+
+
+<style>
+li:not(li:first-child) {
+  margin-top: 0;
+}
+</style>
+
 
 ---
 layout: twocols
@@ -135,6 +155,8 @@ $$f(n) = f(n-1) + f(n-2)$$
 
 
 ---
+hideInToc: true
+---
 
 # Python 3.10 (baseline)
 
@@ -144,6 +166,8 @@ $$f(n) = f(n-1) + f(n-2)$$
 
 
 ---
+hideInToc: true
+---
 
 # Python 3.10 (baseline)
 
@@ -152,6 +176,8 @@ $$f(n) = f(n-1) + f(n-2)$$
 <RenderWhen context="main"><Asciinema src="casts/triangles/py310.cast" :playerProps="{speed: 2, idleTimeLimit: 2, fit: false }" class="scale-90"></Asciinema></RenderWhen>
 
 
+---
+hideInToc: true
 ---
 
 # Faster?
@@ -196,6 +222,8 @@ li:not(li:first-child) {
 
 
 ---
+hideInToc: true
+---
 
 # Python 3.11
 
@@ -203,6 +231,8 @@ li:not(li:first-child) {
 
 <RenderWhen context="main"><Asciinema src="casts/fibonacci/py311.cast" :playerProps="{speed: 2, idleTimeLimit: 2, fit: false }" class="scale-90"></Asciinema></RenderWhen>
 
+---
+hideInToc: true
 ---
 
 # Python 3.11
@@ -248,6 +278,7 @@ layout: twocols
 
 ---
 layout: twocols
+hideInToc: true
 ---
 
 # Cython
@@ -299,6 +330,8 @@ def fib(n: cython.int) -> cython.int:
 -->
 
 ---
+hideInToc: true
+---
 
 # Cython
 
@@ -307,6 +340,8 @@ def fib(n: cython.int) -> cython.int:
 <RenderWhen context="main"><Asciinema src="casts/fibonacci/cy.cast" :playerProps="{speed: 2, idleTimeLimit: 2, fit: false }" class="scale-85"></Asciinema></RenderWhen>
 
 
+---
+hideInToc: true
 ---
 
 # Cython
@@ -324,6 +359,8 @@ def fib(n: cython.int) -> cython.int:
 
 
 ---
+hideInToc: true
+---
 
 # Mypyc
 
@@ -332,6 +369,8 @@ def fib(n: cython.int) -> cython.int:
 <RenderWhen context="main"><Asciinema src="casts/fibonacci/mypy.cast" :playerProps="{speed: 2, idleTimeLimit: 2, fit: false }" class="scale-85"></Asciinema></RenderWhen>
 
 
+---
+hideInToc: true
 ---
 
 # Mypyc
@@ -376,6 +415,8 @@ li:not(li:first-child) {
 }
 </style>
 
+---
+hideInToc: true
 ---
 
 # Pypy
@@ -423,6 +464,8 @@ Building wheels for collected packages: numpy, py
 -->
 
 ---
+hideInToc: true
+---
 
 # Pypy
 
@@ -431,6 +474,8 @@ Building wheels for collected packages: numpy, py
 <RenderWhen context="main"><Asciinema src="casts/fibonacci/pypy.cast" :playerProps="{speed: 2, idleTimeLimit: 2, fit: false }" class="scale-85"></Asciinema></RenderWhen>
 
 
+---
+hideInToc: true
 ---
 
 # Pypy
@@ -444,44 +489,108 @@ Building wheels for collected packages: numpy, py
 layout: twocols
 ---
 
-# Bindings
+# Bindings (PyO3)
 
 ::left::
 
-- PyO3 - supports pypy via cpyext
-- PyBind
-
-mention c++
-mention rust
-	mention pypy integration
-
-TODO: research pyo3
+- Binding $\approx$ integrate different languages
+- <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/ISO_C%2B%2B_Logo.svg/1822px-ISO_C%2B%2B_Logo.svg.png" h-7 inline-block /> <carbon-arrows-horizontal /> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/1869px-Python-logo-notext.svg.png" h-7 inline-block />
+	- <img src="https://ww1.freelogovectors.net/wp-content/uploads/2018/07/tensorflow-logo.png" h-6 inline-block />
+    - <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/PyTorch_logo_black.svg/2560px-PyTorch_logo_black.svg.png" h-6 inline-block />
+- <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Rust_programming_language_black_logo.svg/1024px-Rust_programming_language_black_logo.svg.png" h-7 inline-block /> <carbon-arrows-horizontal /> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/1869px-Python-logo-notext.svg.png" h-7 inline-block />
+	- <img src="https://raw.githubusercontent.com/pola-rs/polars-static/master/logos/polars_github_logo_rect_dark_name.svg" h-7 rounded inline-block />
+    - <img src="https://avatars.githubusercontent.com/u/110818415?s=280&v=4" h-8 inline-block /> Pydantic
 
 ::right::
 
-- add diagram with langs here
+<div p-24>
+
+```mermaid
+flowchart TB
+	Python<-->libpython["libpython (C)"]
+    Rust<-->libpython
+```
+
+</div>
+
+<style>
+ .slidev-layout li {
+    line-height: 2.6em;
+}
+</style>
+
+<!--
+https://www.reddit.com/r/rust/comments/lrt7i8/can_someone_help_me_understand_pyo3_im_not_sure/
+-->
+
+---
+hideInToc: true
+---
+
+# Bindings (PyO3)
+
+## <carbon-arrow-right />  fibonacci (baseline: 31.9s)
+
+<RenderWhen context="main"><Asciinema src="casts/fibonacci/rs.cast" :playerProps="{speed: 2, idleTimeLimit: 2, fit: false }" class="scale-85"></Asciinema></RenderWhen>
 
 
+---
+hideInToc: true
+---
+
+# Bindings (PyO3)
+
+## <carbon-arrow-right />  triangles (baseline: 133.9s)
+
+<RenderWhen context="main"><Asciinema src="casts/triangles/rs.cast" :playerProps="{speed: 2.5, idleTimeLimit: 2.5, fit: false }" class="scale-85"></Asciinema></RenderWhen>
+
+
+---
+layout: twocols
 ---
 
 # Mojo
 
-- Aims to be superset
-- For AI developers
-- High and low level syntax
-- Only typing for low level
-- Standard library incomplete
-- fstrings, etc. missing - https://github.com/modularml/mojo/issues/86
-- https://docs.modular.com/mojo/roadmap.html#small-independent-features
-- https://docs.modular.com/mojo/roadmap.html#no-list-or-dict-comprehensions
-- ["a language with Pythonic syntax"](https://docs.modular.com/mojo/roadmap.html#why-not-add-syntactic-sugar-or-other-minor-new-features)
-- `error: cannot implicitly convert 'String' value to 'StringLiteral' in assignment`
+::left::
+
+- A separate programming language 🔥
+	- Statically typed
+    - **Currently**, a language with Pythonic syntax
+    - Not a drop-in replacement (yet)
+- Aims to be superset of Python <mdi-circle-double/>
+	- High and low level syntax
+    - "AI features"
+- [Very early stages](https://docs.modular.com/mojo/roadmap.html#sharp-edges)
+	- No `kwargs`, f-strings, [comprehensions](https://docs.modular.com/mojo/roadmap.html#no-list-or-dict-comprehensions), etc.
+    - <carbon-arrow-right /> a language with Pythonic syntax
+- [Integrates with Python](https://docs.modular.com/mojo/programming-manual.html#python-integration)
+
+
+```bash
+error: cannot implicitly convert 'String' value to 'StringLiteral' in assignment`
+```
 
 ```bash
 high.mojo:24:12: error: cannot implicitly convert 'PythonObject' value to 'object' in return value
     return nodes
 ```
 
+::right::
+
+<div p-14>
+<img src="https://media.giphy.com/media/XenWVVdSzaxLW/giphy.gif" rounded-lg scale-120/>
+
+</div>
+
+<style>
+li:not(li:first-child) {
+  margin-top: 0;
+}
+</style>
+
+
+---
+hideInToc: true
 ---
 
 # Recap
@@ -495,6 +604,8 @@ high.mojo:24:12: error: cannot implicitly convert 'PythonObject' value to 'objec
 | mypyc       | 1.6822s          | 117.1570s        | 0.0527s              | 0.8746s              | 0.4637s            |
 | pyo3        | 0.7056s          | 3.3887s          | **0.0221s**          | **0.0253s**          | **0.0237s**        |
 | mojo*       | ???              | ???              |                      |                      |                    |
+
+\* mojo baseline was slightly different
 
 
 ---
@@ -511,7 +622,8 @@ high.mojo:24:12: error: cannot implicitly convert 'PythonObject' value to 'objec
 
 ---
 layout: qrcode
-url: https://2023.pycon.pt
+url: https://github.com/murilo-cunha/faster-python-with-friends
+hideInToc: true
 ---
 
 # Code and slides
