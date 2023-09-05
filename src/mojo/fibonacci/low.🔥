@@ -1,0 +1,19 @@
+import time
+
+
+fn fib(n: Int) -> Int:
+    """Calculate the nth Fibonacci number."""
+    if n <= 1:
+        return n
+    return fib(n - 2) + fib(n - 1)
+
+
+def time_fib(n: Int):
+    start = time.now()
+    result = fib(n)
+    end = time.now()
+    print("`fib` took ", (end - start) / 1_000_000_000, "secs")
+
+
+def main():
+    time_fib(40)
