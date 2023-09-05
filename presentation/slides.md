@@ -98,7 +98,11 @@ layout: twocols
 
 ::right::
 
-<img src="https://preview.redd.it/40t7alhvlac91.png?width=960&crop=smart&auto=webp&s=5ccb8b9f46fbe4abb0f2c8822800722947a4737f" class="rounded-lg shadow-lg scale-90"/>
+<div h-100 flex items-end justify-center>
+
+<img src="/images/python_slow_meme.png" rounded-lg shadow-lg scale-80 />
+
+</div>
 
 
 ---
@@ -201,7 +205,7 @@ hideInToc: true
 <v-clicks at=3>
 
 - Yes!
-- Not everything "needs" to be fast, but it's always  nicer to
+- "Nice to have"s vs. "must have"s
 - Overall trend in Python
 	- [Faster CPython](https://devblogs.microsoft.com/python/python-311-faster-cpython-team/) (3.11)
   	- No-GIL Python (tentatively 3.13)
@@ -492,6 +496,7 @@ layout: twocols
 # Bindings (PyO3)
 
 ::left::
+<v-clicks depth=2>
 
 - Binding $\approx$ integrate different languages
 - <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/ISO_C%2B%2B_Logo.svg/1822px-ISO_C%2B%2B_Logo.svg.png" h-7 inline-block /> <carbon-arrows-horizontal /> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/1869px-Python-logo-notext.svg.png" h-7 inline-block />
@@ -501,9 +506,13 @@ layout: twocols
 	- <img src="https://raw.githubusercontent.com/pola-rs/polars-static/master/logos/polars_github_logo_rect_dark_name.svg" h-7 rounded inline-block />
     - <img src="https://avatars.githubusercontent.com/u/110818415?s=280&v=4" h-8 inline-block /> Pydantic
 
+</v-clicks>
+
 ::right::
 
-<div p-24>
+<v-click>
+
+<div p-24 scale-140>
 
 ```mermaid
 flowchart TB
@@ -512,6 +521,7 @@ flowchart TB
 ```
 
 </div>
+</v-click>
 
 <style>
  .slidev-layout li {
@@ -521,6 +531,16 @@ flowchart TB
 
 <!--
 https://www.reddit.com/r/rust/comments/lrt7i8/can_someone_help_me_understand_pyo3_im_not_sure/
+
+"The reference implementation of Python (known as CPython when you need to contrast it against things like PyPy, Jython, and IronPython) exposes its core as a library named libpython which you can either use to embed a Python runtime in your code, or just to get the API definitions to write a Python library in C.
+
+PyO3 wraps that C library in a safe Rust API.
+
+When you call Python from Rust, you're spinning up a Python runtime inside your Rust process and feeding Python code to it. (Similar to running a JavaScript engine inside a browser.)
+
+When you call Rust from Python, you're making a Rust .so/.dll/.dylib library that matches the API the Python import statement expects to find when loading C code."
+
+https://github.com/pydantic/pydantic/issues/4790
 -->
 
 ---
@@ -531,7 +551,7 @@ hideInToc: true
 
 ## <carbon-arrow-right />  fibonacci (baseline: 31.9s)
 
-<RenderWhen context="main"><Asciinema src="casts/fibonacci/rs.cast" :playerProps="{speed: 2, idleTimeLimit: 2, fit: false }" class="scale-85"></Asciinema></RenderWhen>
+<RenderWhen context="main"><Asciinema src="casts/fibonacci/rs.cast" :playerProps="{speed: 3, idleTimeLimit: 2, fit: false }" class="scale-85"></Asciinema></RenderWhen>
 
 
 ---
@@ -542,7 +562,7 @@ hideInToc: true
 
 ## <carbon-arrow-right />  triangles (baseline: 133.9s)
 
-<RenderWhen context="main"><Asciinema src="casts/triangles/rs.cast" :playerProps="{speed: 2.5, idleTimeLimit: 2.5, fit: false }" class="scale-85"></Asciinema></RenderWhen>
+<RenderWhen context="main"><Asciinema src="casts/triangles/rs.cast" :playerProps="{speed: 3, idleTimeLimit: 2.5, fit: false }" class="scale-85"></Asciinema></RenderWhen>
 
 
 ---
@@ -554,26 +574,16 @@ layout: twocols
 ::left::
 
 - A separate programming language 🔥
-	- Statically typed
+	- Statically typed, compiled
     - **Currently**, a language with Pythonic syntax
     - Not a drop-in replacement (yet)
 - Aims to be superset of Python <mdi-circle-double/>
 	- High and low level syntax
     - "AI features"
 - [Very early stages](https://docs.modular.com/mojo/roadmap.html#sharp-edges)
-	- No `kwargs`, f-strings, [comprehensions](https://docs.modular.com/mojo/roadmap.html#no-list-or-dict-comprehensions), etc.
+	- No `dict`, `kwargs`, [comprehensions](https://docs.modular.com/mojo/roadmap.html#no-list-or-dict-comprehensions), etc.
     - <carbon-arrow-right /> a language with Pythonic syntax
 - [Integrates with Python](https://docs.modular.com/mojo/programming-manual.html#python-integration)
-
-
-```bash
-error: cannot implicitly convert 'String' value to 'StringLiteral' in assignment`
-```
-
-```bash
-high.mojo:24:12: error: cannot implicitly convert 'PythonObject' value to 'object' in return value
-    return nodes
-```
 
 ::right::
 
@@ -590,20 +600,183 @@ li:not(li:first-child) {
 
 
 ---
+layout: twocols
+hideInToc: true
+---
+
+# Mojo
+
+### Calculating euclidean distance
+
+::left::
+
+<br/>
+```python
+def python_naive_dist(a,b):
+    s = 0.0
+    n = len(a)
+    for i in range(n):
+        dist = a[i] - b[i]
+        s += dist*dist
+    return sqrt(s)
+```
+
+
+::right::
+
+```mojo{|1|2-4|5,6,8|5,9}
+fn mojo_fn_dist(
+    a: Tensor[DType.float64],
+    b: Tensor[DType.float64],
+) -> Float64:
+    var s: Float64 = 0.0
+    let n = a.num_elements()
+    for i in range(n):
+        let dist = a[i] - b[i]
+        s += dist*dist
+    return sqrt(s)
+```
+
+::bottom::
+
+[<carbon-arrow-right/> $\approx$ 60x faster than Python implementation; $\approx$ 2x faster than NumPy](https://www.modular.com/blog/an-easy-introduction-to-mojo-for-python-programmers)
+
+---
+
+# Mojo
+
+### Calculating euclidean distance
+
+<br/>
+<br/>
+<br/>
+
+::left::
+
+```python
+def fib(n):
+    """Calculate the nth Fibonacci number."""
+    if n <= 1:
+        return n
+    return fib(n - 2) + fib(n - 1)
+```
+
+
+::right::
+
+```mojo
+fn fib(n: Int) -> Int:
+    """Calculate the nth Fibonacci number."""
+    if n <= 1:
+        return n
+    return fib(n - 2) + fib(n - 1)
+```
+
+
+---
+hideInToc: true
+---
+# Mojo
+
+```mojo{|1|2|3,4|6-}
+@register_passable("trivial")
+struct Complex:
+    var real: Float32
+    var imag: Float32
+
+    fn __init__(real: Float32, imag: Float32) -> Self:
+        return Self {real: real, imag: imag}
+
+    fn __add__(lhs, rhs: Self) -> Self:
+        return Self(lhs.real + rhs.real, lhs.imag + rhs.imag)
+
+    fn __mul__(lhs, rhs: Self) -> Self:
+        return Self(
+            lhs.real * rhs.real - lhs.imag * rhs.imag,
+            lhs.real * rhs.imag + lhs.imag * rhs.real,
+        )
+
+    fn squared_norm(self) -> Float32:
+        return self.real * self.real + self.imag * self.imag
+```
+
+<!--
+https://docs.modular.com/mojo/notebooks/HelloMojo.html#structures
+
+> Mojo structs are completely static—they are bound at compile-time, so they do not allow dynamic dispatch or any runtime changes to the structure.
+-->
+
+---
+hideInToc: true
+---
+
+# Mojo
+
+## <carbon-arrow-right />  fibonacci (baseline: 31.9s)
+
+<RenderWhen context="main"><Asciinema src="casts/mojo_fib.cast" :playerProps="{speed: 1.5, idleTimeLimit: 2, fit: false }" class="scale-85"></Asciinema></RenderWhen>
+
+
+---
+hideInToc: true
+layouit: twocols
+---
+
+# Mojo
+
+## <carbon-arrow-right />  triangles (baseline: 133.9s)
+
+::right::
+
+<v-click at=0>
+<div h-100 w-full flex items-center justify-center>
+<img src="https://media.giphy.com/media/SY44A3CMBwM83yI7t2/giphy.gif" rounded-lg shadow-lg scale-140 />
+</div>
+</v-click>
+
+::left::
+
+<br/>
+
+<v-clicks at=1>
+
+- Refactor code
+	- No `csv` and `defaultdict` (or `dict`)
+- Try to import reading code
+	- `error: cannot implicitly convert 'PythonObject' value to 'object'`
+- Reimplement reading CSVs
+	- Dealing with `None`s
+    - Static typing
+    - `StringLiteral` vs `String`
+
+</v-clicks>
+
+<v-click>
+
+```bash
+(...)
+Assertion (...) failed.
+Please submit a bug report to (...)
+```
+
+</v-click>
+
+
+---
 hideInToc: true
 ---
 
 # Recap
 
-| method      | time - fib | time - △ | relative - fib | relative - △ | relative - mean |
-| ----------- | ---------------- | ---------------- | -------------------- | -------------------- | ------------------ |
-| python 3.10 | 31.8979s         | 133.9575s        | 1                    | 1                    | 1                  |
-| python 3.11 | 19.1536s         | 123.0167s        | 0.6005s              | 0.9183s              | 0.7594s            |
-| pypy3       | 5.9190s          | 5.9954s          | 0.1856s              | 0.0448s              | 0.1152s            |
-| cython      | 6.8486s          | 127.8094s        | 0.2147s              | 0.9541s              | 0.5844s            |
-| mypyc       | 1.6822s          | 117.1570s        | 0.0527s              | 0.8746s              | 0.4637s            |
-| pyo3        | 0.7056s          | 3.3887s          | **0.0221s**          | **0.0253s**          | **0.0237s**        |
-| mojo*       | ???              | ???              |                      |                      |                    |
+| method      | time - fib | time - △  | relative - fib | relative - △ | relative - mean |
+| ----------- | ---------- | --------- | -------------- | ------------ | --------------- |
+| python 3.10 | 31.8979s   | 133.9575s | 1              | 1            | 1               |
+| python 3.11 | 19.1536s   | 123.0167s | 0.6005         | 0.9183       | 0.7594          |
+| pypy3       | 5.9190s    | 5.9954s   | 0.1856         | 0.0448       | 0.1152          |
+| cython      | 6.8486s    | 127.8094s | 0.2147         | 0.9541       | 0.5844          |
+| mypyc       | 1.6822s    | 117.1570s | 0.0527         | 0.8746       | 0.4637          |
+| pyo3        | 0.7056s    | 3.3887s   | 0.0221         | **0.0253**   | **0.0237**      |
+| mojo*       | 0.3658     | ???       | **0.0061**     |              |                 |
 
 \* mojo baseline was slightly different
 
@@ -612,6 +785,7 @@ hideInToc: true
 
 # Final thoughts
 
+- Practical guide
 - Python for most stuff, optimize for worst
 - This is already the reality - add examples
 - We are stronger with friends

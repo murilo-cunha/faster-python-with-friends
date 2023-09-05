@@ -15,10 +15,10 @@ Note: values may change - local setup was experimental and unstable.
 | pypy3       | 5.9190s          | 5.9954s          | 0.1856               | 0.0448               | 0.1152             |
 | cython      | 6.8486s          | 127.8094s        | 0.2147               | 0.9541               | 0.5844             |
 | mypyc       | 1.6822s          | 117.1570s        | 0.0527               | 0.8746               | 0.4637             |
-| pyo3        | 0.7056s          | 3.3887s          | **0.0221**           | **0.0253**           | **0.0237**         |
-| mojo*       | ???              | ???              |                      |                      |                    |
+| pyo3        | 0.7056s          | 3.3887s          | 0.0221               | **0.0253**           | **0.0237**         |
+| mojo*       | 0.3658           | ???              | **0.0061**           |                      |                    |
 
-
+*mojo compute is different due to different setup
 ## Setup
 
 ```bash
