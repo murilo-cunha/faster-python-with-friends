@@ -1,3 +1,4 @@
+"""High level representationn for Fibonacci code."""
 import time
 
 
@@ -9,6 +10,7 @@ def fib(n):
 
 
 def time_fib(n):
+    """Time `fib` function."""
     start = time.time_ns()
     result = fib(n)
     end = time.time_ns()
@@ -16,7 +18,5 @@ def time_fib(n):
 
 
 def main():
+    """Mojo entrypoint."""
     time_fib(40)
-
-if __name__ == "__main__":
-    main()

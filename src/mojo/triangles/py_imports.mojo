@@ -1,3 +1,4 @@
+"""Calculate triangles attempt, importing helper functions from Python."""
 from python import Python
 
 
@@ -40,7 +41,7 @@ def calc_triangles():
     """
     # Python.add_to_path("utils")
     # utils = Python.import_module("utils")
-    # var graph = utils.graph()
+    # var graph = utils.graph()  # raises error
     num_triangles = 0
 
     for node in graph.keys():

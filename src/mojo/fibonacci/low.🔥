@@ -9,6 +9,7 @@ fn fib(n: Int) -> Int:
 
 
 def time_fib(n: Int):
+    """Time `fib` function."""
     start = time.now()
     result = fib(n)
     end = time.now()
@@ -16,4 +17,5 @@ def time_fib(n: Int):
 
 
 def main():
+    """Mojo entrypoint."""
     time_fib(40)

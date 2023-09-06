@@ -1,4 +1,4 @@
-# from String import String
+"""Calculate triangles attempt, reimplementing CSV parsing."""
 from python import Python
 
 
@@ -7,10 +7,6 @@ def add_to_graph(graph, org, dst):
         current_dst = graph[org]
         current_dst.append(dst)
         graph[org] = current_dst
-
-class Foo:
-    def __init__(self, x):
-        self.x = x
 
 
 def main():
