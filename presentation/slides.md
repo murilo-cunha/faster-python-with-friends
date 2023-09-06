@@ -809,6 +809,8 @@ layout: twocols
 
 # Final thoughts
 
+<br/>
+
 ::left::
 
 <v-clicks depth=2>
@@ -822,31 +824,29 @@ layout: twocols
   5. Bindings (PyO3)
   6. Mojo*
 
+
 </v-clicks>
 
 ::right::
 
-
-<br/>
-<br/>
 <v-click>
 
-![Python for most stuff, optimize for worst]()
+
 
 </v-click>
 
 <v-clicks>
 
-- Dev speed vs. code speed
+- Why not just optimize from the start?
 <p><carbon-arrow-right /> reality in Python</p>
+
+<br/>
 
 </v-clicks>
 <div flex justify-center>
 <img src = "https://media4.giphy.com/media/Fzb4nqyfrTA66u2HOD/giphy.gif" h-56 rounded-lg shadow/>
 </div >
 <v-click>
-
-![Python for most stuff, optimize for worst]()
 
 </v-click>
 
