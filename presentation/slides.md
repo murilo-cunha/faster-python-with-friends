@@ -286,7 +286,7 @@ layout: twocols
 
 ::right::
 
-<iframe src="https://cython.readthedocs.io/en/latest/src/quickstart/cythonize.html#faster-code-via-static-typing" class="h-sm w-sm rounded shadow"/>
+<iframe src="https://cython.readthedocs.io/en/latest/src/quickstart/cythonize.html#typing-variables" class="h-sm w-sm rounded shadow"/>
 
 
 ---
