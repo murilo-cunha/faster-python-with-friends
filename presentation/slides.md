@@ -53,7 +53,7 @@ li:not(li:first-child) {
 
 ---
 layout: presenter
-photo: /images/pic-blur.png
+photo: images/pic-blur.png
 hideInToc: true
 ---
 
