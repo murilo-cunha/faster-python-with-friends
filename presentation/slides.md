@@ -1,5 +1,5 @@
 ---
-theme: meetup
+theme: ./theme
 addons:
   - slidev-addon-asciinema
 lineNumbers: false
