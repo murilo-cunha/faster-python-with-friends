@@ -71,7 +71,7 @@ hideInToc: true
 - ☁️ Astronomer Certified - DAG Authoring & Airflow
 - ☁️ Snowflake - SnowPro Core
 - 🤪 Fun facts: 🐍, 🦀, 🐓
-- 🤖 Tech lead AI @ dataroots
+- 🤖 Tech lead AI @ <img src="https://dataroots.io/assets/logo/logo-green.png" inline-block h-5/>
 
 <style>
 li:not(li:first-child) {
