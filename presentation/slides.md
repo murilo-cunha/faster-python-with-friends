@@ -278,6 +278,7 @@ hideInToc: true
 	- (Much) faster
     - Little to no overhead
 - Cons
+    - No packages, only apps
 	- Probably not worth it for short scripts
     - Lags behing CPython versions
     - [Doesn't play nice with C extensions](https://stackoverflow.com/questions/67927205/why-is-pypy3-slower-than-python)
@@ -298,13 +299,14 @@ li:not(li:first-child) {
 }
 </style>
 
+
 ---
 hideInToc: true
 ---
 
 # Pypy
 
-```python
+```python {|3|4|5}
 def np_mean() -> None:
     """Time 5x numpy mean operation."""
     for _ in range(5):
@@ -380,7 +382,7 @@ layout: twocols
 
 - [Cython 3.0 recently released!](https://github.com/cython/cython/milestone/58) 🎉
 - Transpile Python to C extensions (that can be used in Python again)
-- Aims to be a Superset of Python
+- Aims to be a superset of Python
 	- `cdef`, `cimport`, ...
 - Also possible to [augment `.py` with Cython types](https://cython.readthedocs.io/en/latest/src/tutorial/pure.html?highlight=526#augmenting-pxd)
 - Allows [bypassing the GIL](https://cython.readthedocs.io/en/latest/src/tutorial/pure.html?highlight=526#managing-the-global-interpreter-lock)
@@ -583,16 +585,17 @@ layout: twocols
 <v-clicks depth=2>
 
 - A separate programming language 🔥
-	- From the Modular's [AI Engine](https://www.modular.com/engine) project
+	- Aims to be superset of Python <mdi-circle-double/>
+    - Not a drop-in replacement (yet)
+  	- From the Modular's [AI Engine](https://www.modular.com/engine) project
 	- Statically typed, compiled
     - **Currently**, a different [language with Pythonic syntax](https://discuss.python.org/t/mojo-python-with-c-gpu-performance/26993/7)
-    - Not a drop-in replacement (yet)
-- Aims to be superset of Python <mdi-circle-double/>
-	- High and low level syntax
-    - "AI features"
+- High and low level syntax
+- "AI features"
 - [Very early stages](https://docs.modular.com/mojo/roadmap.html#sharp-edges)
 	- No [comprehensions](https://docs.modular.com/mojo/roadmap.html#no-list-or-dict-comprehensions), `dict`, `kwargs`, `class`, etc.
 - [Integrates with Python](https://docs.modular.com/mojo/programming-manual.html#python-integration)
+- Now you can [download it](https://www.modular.com/mojo)!
 
 </v-clicks>
 
@@ -605,7 +608,7 @@ layout: twocols
 <v-click>
 
 - Examples
-  - https://github.com/ego/awesome-mojo
+  - [github.com/ego/awesome-mojo](https://github.com/ego/awesome-mojo)
   - [`mojo-libc`](https://github.com/crisadamo/mojo-libc)
 </v-click>
 
@@ -614,6 +617,7 @@ li:not(li:first-child) {
   margin-top: 0;
 }
 </style>
+
 
 ---
 hideInToc: true
@@ -704,9 +708,10 @@ hideInToc: true
 
 <br/>
 <br/>
-<br/>
 
 ::left::
+
+`src/mojo/fibonacci/high.mojo`
 
 ```python
 def fib(n):
@@ -716,8 +721,9 @@ def fib(n):
     return fib(n - 2) + fib(n - 1)
 ```
 
-
 ::right::
+
+`src/mojo/fibonacci/low.🔥`
 
 ```rust {|1}
 fn fib(n: Int) -> Int:
@@ -726,6 +732,7 @@ fn fib(n: Int) -> Int:
         return n
     return fib(n - 2) + fib(n - 1)
 ```
+
 
 ---
 hideInToc: true
@@ -817,7 +824,7 @@ layout: twocols
 
 - Other languages vs. interpreters
 - Always benchmark and test
-- Normally:
+- Practical opinionated guide:
   1. Python 3.11
   2. Pypy (if app, not package)
   3. Mypy/Cython
@@ -837,7 +844,7 @@ layout: twocols
 
 <v-clicks>
 
-- Why not just optimize from the start?
+- Why not just write in Rust then?
 <p><carbon-arrow-right /> reality in Python</p>
 
 <br/>
