@@ -21,63 +21,104 @@ Note: values may change - local setup was experimental and unstable.
 *mojo compute is different due to different setup
 ## Setup
 
-```bash
-git clone ...
-pdm install
-```
+Make sure you have Python 3.10 and 3.11 and Pypy3 installed. You can use [pyenv](https://github.com/pyenv/pyenv) for managing versions. Also make sure to have [Rust installed](https://www.rust-lang.org/tools/install) for PyO3 experiment.
 
-> `pdm install --dev ./src/rs` or, in a virtual environment, `pip install ./src/rs`
 
-For updates, uninstall and reinstall `./src/rs`.
-
-Install pypy3.10 -> create venv mannually and run script manually
-
-install dependencies with `pip install .`
-## Python 3.9
+### Get the code
 
 ```bash
-source .venv/bin/activate
-python -c "from pure_python.triangles import main; main()"
+git clone git@github.com:murilo-cunha/faster-python-with-friends.git
+cd faster-python-with-friends
 ```
 
-## Python 3.11
+### Create and install dependencies for each environment
+
+#### Python 3.10
 
 ```bash
-pdm venv create -n py311 python3.11
-eval $(pdm venv activate py311)
-python -c "from pure_python.triangles import main; main()"
+python3.10 -m venv .venv
+source .venv/bin/activate  # or `.venv/Scripts/activate` on Windows
+pip install .
 ```
 
-## Cython
+#### Python 3.11
 
 ```bash
-source .venv/bin/activate
-cythonize --3str -i pure_python/triangles.py
-python -c "from pure_python.triangles import main; main()"
-rm pure_python/*.so pure_python/*.c # clean up
-rm -rf pure_python/build  # clean up
+python3.11 -m venv .venv-3.11
+source .venv-3.11/bin/activate  # or `.venv-3.11/Scripts/activate` on Windows
+pip install .
 ```
 
-## Mypyc
+#### Pypy
 
 ```bash
-source .venv/bin/activate
-mypyc pure_python/triangles.py
-python -c "from triangles import main; main()"
-rm *.so  # clean up
-rm -rf build/  # clean up
+pypy3 -m venv .venv-pypy
+source .venv-pypy/bin/activate  # or `.venv-pypy/Scripts/activate` on Windows
+pip install .
 ```
 
-## PyO3
+#### Mojo
+
+Install Mojo on Modular's their [official website](https://www.modular.com/mojo).
+
+## Experiments
+
+Follow the snippets below for each experiment. Some experiments produce artifacts - make sure to delete them before running the next experiment.
+
+### Python 3.10
 
 ```bash
-source .venv/bin/activate
-cd rust_python/
-maturin develop --release
-python -c "from rust_python.triangles import main; main();"
+source .venv/bin/activate  # or `.venv/Scripts/activate` on Windows
+python scripts/time_fib.py 40 --lib py  # fibonacci
+python scripts/time_tri.py data/facebook_combined.txt --lib py  # triangles
 ```
 
-## Mojo 🔥
+### Python 3.11
 
-Mojo not open source yet (June, 2023).
-Could not compare performance to regular Python - imports, different syntax, etc.
+```bash
+source .venv-3.11/bin/activate  # or `.venv-3.11/Scripts/activate` on Windows
+python scripts/time_fib.py 40 --lib py  # fibonacci
+python scripts/time_tri.py data/facebook_combined.txt --lib py  # triangles
+```
+
+### Cython
+
+```bash
+source .venv/bin/activate  # or `.venv/Scripts/activate` on Windows
+cythonize -i src/cy  # build extensions
+python scripts/time_fib.py 40 --lib cy  # fibonacci
+python scripts/time_tri.py data/facebook_combined.txt --lib cy  # triangles
+```
+
+### Mypyc
+
+```bash
+source .venv/bin/activate  # or `.venv/Scripts/activate` on Windows
+mypyc src/py  # build extensions
+python scripts/time_fib.py 40 --lib py  # fibonacci
+python scripts/time_tri.py data/facebook_combined.txt --lib py  # triangles
+```
+
+### Pypy
+
+```bash
+source .venv-pypy/bin/activate  # or `.venv-pypy/Scripts/activate` on Windows
+python scripts/time_fib.py 40 --lib py  # fibonacci
+python scripts/time_tri.py data/facebook_combined.txt --lib py  # triangles
+```
+
+### PyO3 (bindings to Rust)
+
+```bash
+source .venv/bin/activate  # or `.venv/Scripts/activate` on Windows
+cd src/rs/
+maturin develop --release  # build package
+python ../../scripts/time_fib.py 40 --lib rs  # fibonacci
+python ../../scripts/time_tri.py data/facebook_combined.txt --lib rs  # triangles
+```
+
+### Mojo 🔥
+
+```bash
+mojo src/mojo/fibonacci/low.🔥
+```
