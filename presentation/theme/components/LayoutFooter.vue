@@ -3,7 +3,7 @@
     class="bg-barBottom flex absolute w-full bottom-0 left-0 py-0.5 px-4 text-sm"
   >
     <div v-if="$slidev.nav.currentLayout !== 'intro'" class="w-1/2 text-left">
-      <img src="./assets/symbol-rainbow.png" class="h-10 inline-block" />
+      <img src="./assets/symbol-rainbow.png" class="h-6 py-0.5 inline-block" />
       <span v-if="$slidev.themeConfigs.title" class="px-2">{{
         $slidev.themeConfigs.title
       }}</span>
