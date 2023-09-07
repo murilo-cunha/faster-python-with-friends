@@ -70,6 +70,7 @@ hideInToc: true
 - ☁️ Hashicorp Certified - Terraform
 - ☁️ Astronomer Certified - DAG Authoring & Airflow
 - ☁️ Snowflake - SnowPro Core
+- 🤪 Fun facts: 🐍, 🦀, 🐓
 - 🤖 Tech lead AI @ dataroots
 
 <style>
