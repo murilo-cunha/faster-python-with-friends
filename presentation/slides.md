@@ -263,6 +263,110 @@ hideInToc: true
 
 <RenderWhen context="main"><Asciinema src="casts/py311.cast" :playerProps="{speed: 2, idleTimeLimit: 2, fit: false }"></Asciinema></RenderWhen>
 
+---
+
+# Pypy
+
+::left::
+
+<v-clicks>
+
+- CPython drop in (almost)
+- Written in RPython
+- JIT compilation, optimizing "critical" code
+- Pros
+	- (Much) faster
+    - Little to no overhead
+- Cons
+	- Probably not worth it for short scripts
+    - Lags behing CPython versions
+    - [Doesn't play nice with C extensions](https://stackoverflow.com/questions/67927205/why-is-pypy3-slower-than-python)
+    	> [At the moment of writing (October 2017) the main drawback of numpy is that cpyext is infamously slow, and thus it has worse performance compared to numpypy](https://doc.pypy.org/en/latest/faq.html#should-i-install-numpy-or-numpypy)
+
+</v-clicks>
+
+::right::
+
+<br/>
+<br/>
+
+![](https://www.pypy.org/images/pypy-logo.svg)
+
+<style>
+li:not(li:first-child) {
+  margin-top: 0;
+}
+</style>
+
+---
+hideInToc: true
+---
+
+# Pypy
+
+```python
+def np_mean() -> None:
+    """Time 5x numpy mean operation."""
+    for _ in range(5):
+        vv = np.random.rand(10_000_000).astype(np.float32)
+        _ = np.mean(vv)
+```
+
+<RenderWhen context="main"><Asciinema src="casts/numpy.cast" :playerProps="{speed: 4, idleTimeLimit: 2.5 }" class="scale-85"></Asciinema></RenderWhen>
+
+<!--
+# Pypy
+
+- Drop in replacement interpreter
+- Written in RPython
+- JIT compilation (Python is AOC)
+	- Only compiles most used parts of code (compilation has a cost)
+- nice if you have loops, etc. need to iterated bit by bit
+not worth it if you have tasks that are very fast (ie.: <1s) - really fast it'll take longer actually
+pypy -> compiles+optimizees bytecode (takes some time as well)
+lags a bit behind (python versions and whatnot)
+
+- if a Python function works with only one or two different object types, PyPy generates machine code to handle those specific cases.
+
+- https://stackoverflow.com/questions/67927205/why-is-pypy3-slower-than-python
+- https://www.pypy.org/posts/2017/10/pypy-v59-released-now-supports-pandas-2261195727261691228.html
+
+https://doc.pypy.org/en/latest/faq.html#should-i-install-numpy-or-numpypy
+> At the moment of writing (October 2017) the main drawback of numpy is that cpyext is infamously slow, and thus it has worse performance compared to numpypy
+
+https://morepypy.blogspot.com/2018/09/inside-cpyext-why-emulating-cpython-c.html
+
+> However, the performance of cpyext is generally poor. A Python program which makes heavy use of cpyext extensions is likely to be slower on PyPy than on CPython.
+
+<iframe src="https://www.pypy.org/performance.html#insider-s-point-of-view" class="h-full w-full rounded "/>
+
+```bash
+Building wheels for collected packages: numpy, py
+  Building wheel for numpy (pyproject.toml) ... -
+```
+-->
+
+---
+hideInToc: true
+---
+
+# Pypy
+
+## <carbon-arrow-right />  fibonacci (baseline: 31.9s)
+
+<RenderWhen context="main"><Asciinema src="casts/fibonacci/pypy.cast" :playerProps="{speed: 3, idleTimeLimit: 2, fit: false }" class="scale-80"></Asciinema></RenderWhen>
+
+
+---
+hideInToc: true
+---
+
+# Pypy
+
+## <carbon-arrow-right />  triangles (baseline: 133.9s)
+
+<RenderWhen context="main"><Asciinema src="casts/triangles/pypy.cast" :playerProps="{speed: 2.5, idleTimeLimit: 2.5, fit: false }" class="scale-80"></Asciinema></RenderWhen>
+
 
 ---
 layout: twocols
@@ -391,112 +495,6 @@ hideInToc: true
 ## <carbon-arrow-right />  triangles (baseline: 133.9s / cython: 127.8s)
 
 <RenderWhen context="main"><Asciinema src="casts/triangles/mypy.cast" :playerProps="{speed: 3, idleTimeLimit: 2.5, fit: false }" class="scale-80"></Asciinema></RenderWhen>
-
-
----
-
-# Pypy
-
-::left::
-
-<v-clicks>
-
-- CPython drop in (almost)
-- Written in RPython
-- JIT compilation, optimizing "critical" code
-- Pros
-	- (Much) faster
-    - Little to no overhead
-- Cons
-	- Probably not worth it for short scripts
-    - Lags behing CPython versions
-    - [Doesn't play nice with C extensions](https://stackoverflow.com/questions/67927205/why-is-pypy3-slower-than-python)
-    	> [At the moment of writing (October 2017) the main drawback of numpy is that cpyext is infamously slow, and thus it has worse performance compared to numpypy](https://doc.pypy.org/en/latest/faq.html#should-i-install-numpy-or-numpypy)
-
-</v-clicks>
-
-::right::
-
-<br/>
-<br/>
-
-![](https://www.pypy.org/images/pypy-logo.svg)
-
-<style>
-li:not(li:first-child) {
-  margin-top: 0;
-}
-</style>
-
----
-hideInToc: true
----
-
-# Pypy
-
-```python
-def np_mean() -> None:
-    """Time 5x numpy mean operation."""
-    for _ in range(5):
-        vv = np.random.rand(10_000_000).astype(np.float32)
-        _ = np.mean(vv)
-```
-
-<RenderWhen context="main"><Asciinema src="casts/numpy.cast" :playerProps="{speed: 4, idleTimeLimit: 2.5 }" class="scale-85"></Asciinema></RenderWhen>
-
-<!--
-# Pypy
-
-- Drop in replacement interpreter
-- Written in RPython
-- JIT compilation (Python is AOC)
-	- Only compiles most used parts of code (compilation has a cost)
-- nice if you have loops, etc. need to iterated bit by bit
-not worth it if you have tasks that are very fast (ie.: <1s) - really fast it'll take longer actually
-pypy -> compiles+optimizees bytecode (takes some time as well)
-lags a bit behind (python versions and whatnot)
-
-- if a Python function works with only one or two different object types, PyPy generates machine code to handle those specific cases.
-
-- https://stackoverflow.com/questions/67927205/why-is-pypy3-slower-than-python
-- https://www.pypy.org/posts/2017/10/pypy-v59-released-now-supports-pandas-2261195727261691228.html
-
-https://doc.pypy.org/en/latest/faq.html#should-i-install-numpy-or-numpypy
-> At the moment of writing (October 2017) the main drawback of numpy is that cpyext is infamously slow, and thus it has worse performance compared to numpypy
-
-https://morepypy.blogspot.com/2018/09/inside-cpyext-why-emulating-cpython-c.html
-
-> However, the performance of cpyext is generally poor. A Python program which makes heavy use of cpyext extensions is likely to be slower on PyPy than on CPython.
-
-<iframe src="https://www.pypy.org/performance.html#insider-s-point-of-view" class="h-full w-full rounded "/>
-
-```bash
-Building wheels for collected packages: numpy, py
-  Building wheel for numpy (pyproject.toml) ... -
-```
--->
-
----
-hideInToc: true
----
-
-# Pypy
-
-## <carbon-arrow-right />  fibonacci (baseline: 31.9s)
-
-<RenderWhen context="main"><Asciinema src="casts/fibonacci/pypy.cast" :playerProps="{speed: 3, idleTimeLimit: 2, fit: false }" class="scale-80"></Asciinema></RenderWhen>
-
-
----
-hideInToc: true
----
-
-# Pypy
-
-## <carbon-arrow-right />  triangles (baseline: 133.9s)
-
-<RenderWhen context="main"><Asciinema src="casts/triangles/pypy.cast" :playerProps="{speed: 2.5, idleTimeLimit: 2.5, fit: false }" class="scale-80"></Asciinema></RenderWhen>
-
 
 ---
 layout: twocols
