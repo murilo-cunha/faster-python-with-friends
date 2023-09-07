@@ -173,7 +173,7 @@ hideInToc: true
 
 ## <carbon-arrow-right />  fibonacci
 
-<RenderWhen context="main"><Asciinema src="casts/fibonacci/py310.cast" :playerProps="{speed: 2.5, idleTimeLimit: 2, fit: false }" class="scale-90"></Asciinema></RenderWhen>
+<RenderWhen context="main"><Asciinema src="casts/fibonacci/py310.cast" :playerProps="{speed: 2.5, idleTimeLimit: 2, fit: false }" class="scale-80"></Asciinema></RenderWhen>
 
 
 ---
@@ -184,7 +184,7 @@ hideInToc: true
 
 ## <carbon-arrow-right />  triangles
 
-<RenderWhen context="main"><Asciinema src="casts/triangles/py310.cast" :playerProps="{speed: 3, idleTimeLimit: 2, fit: false }" class="scale-90"></Asciinema></RenderWhen>
+<RenderWhen context="main"><Asciinema src="casts/triangles/py310.cast" :playerProps="{speed: 3, idleTimeLimit: 2, fit: false }" class="scale-80"></Asciinema></RenderWhen>
 
 
 ---
@@ -240,7 +240,7 @@ hideInToc: true
 
 ## <carbon-arrow-right />  fibonacci (baseline: 31.9s)
 
-<RenderWhen context="main"><Asciinema src="casts/fibonacci/py311.cast" :playerProps="{speed: 4, idleTimeLimit: 2, fit: false }" class="scale-85"></Asciinema></RenderWhen>
+<RenderWhen context="main"><Asciinema src="casts/fibonacci/py311.cast" :playerProps="{speed: 4, idleTimeLimit: 2, fit: false }" class="scale-80"></Asciinema></RenderWhen>
 
 
 ---
@@ -251,7 +251,7 @@ hideInToc: true
 
 ## <carbon-arrow-right />  triangles (baseline: 133.9s)
 
-<RenderWhen context="main"><Asciinema src="casts/triangles/py311.cast" :playerProps="{speed: 4, idleTimeLimit: 2, fit: false }" class="scale-85"></Asciinema></RenderWhen>
+<RenderWhen context="main"><Asciinema src="casts/triangles/py311.cast" :playerProps="{speed: 4, idleTimeLimit: 2, fit: false }" class="scale-80"></Asciinema></RenderWhen>
 
 
 ---
@@ -350,7 +350,7 @@ hideInToc: true
 
 ## <carbon-arrow-right />  fibonacci (baseline: 31.9s)
 
-<RenderWhen context="main"><Asciinema src="casts/fibonacci/cy.cast" :playerProps="{speed: 2.5, idleTimeLimit: 2, fit: false }" class="scale-85"></Asciinema></RenderWhen>
+<RenderWhen context="main"><Asciinema src="casts/fibonacci/cy.cast" :playerProps="{speed: 2.5, idleTimeLimit: 2, fit: false }" class="scale-80"></Asciinema></RenderWhen>
 
 
 ---
@@ -361,7 +361,7 @@ hideInToc: true
 
 ## <carbon-arrow-right />  triangles (baseline: 133.9s)
 
-<RenderWhen context="main"><Asciinema src="casts/triangles/cy.cast" :playerProps="{speed: 3, idleTimeLimit: 2, fit: false }" class="scale-85"></Asciinema></RenderWhen>
+<RenderWhen context="main"><Asciinema src="casts/triangles/cy.cast" :playerProps="{speed: 3, idleTimeLimit: 2, fit: false }" class="scale-80"></Asciinema></RenderWhen>
 
 
 ---
@@ -379,7 +379,7 @@ hideInToc: true
 
 ## <carbon-arrow-right />  fibonacci (baseline: 31.9s / cython: 6.8s)
 
-<RenderWhen context="main"><Asciinema src="casts/fibonacci/mypy.cast" :playerProps="{speed: 2.5, idleTimeLimit: 2, fit: false }" class="scale-85"></Asciinema></RenderWhen>
+<RenderWhen context="main"><Asciinema src="casts/fibonacci/mypy.cast" :playerProps="{speed: 2.5, idleTimeLimit: 2, fit: false }" class="scale-80"></Asciinema></RenderWhen>
 
 
 ---
@@ -390,7 +390,7 @@ hideInToc: true
 
 ## <carbon-arrow-right />  triangles (baseline: 133.9s / cython: 127.8s)
 
-<RenderWhen context="main"><Asciinema src="casts/triangles/mypy.cast" :playerProps="{speed: 3, idleTimeLimit: 2.5, fit: false }" class="scale-85"></Asciinema></RenderWhen>
+<RenderWhen context="main"><Asciinema src="casts/triangles/mypy.cast" :playerProps="{speed: 3, idleTimeLimit: 2.5, fit: false }" class="scale-80"></Asciinema></RenderWhen>
 
 
 ---
@@ -484,7 +484,7 @@ hideInToc: true
 
 ## <carbon-arrow-right />  fibonacci (baseline: 31.9s)
 
-<RenderWhen context="main"><Asciinema src="casts/fibonacci/pypy.cast" :playerProps="{speed: 3, idleTimeLimit: 2, fit: false }" class="scale-85"></Asciinema></RenderWhen>
+<RenderWhen context="main"><Asciinema src="casts/fibonacci/pypy.cast" :playerProps="{speed: 3, idleTimeLimit: 2, fit: false }" class="scale-80"></Asciinema></RenderWhen>
 
 
 ---
@@ -495,7 +495,7 @@ hideInToc: true
 
 ## <carbon-arrow-right />  triangles (baseline: 133.9s)
 
-<RenderWhen context="main"><Asciinema src="casts/triangles/pypy.cast" :playerProps="{speed: 2.5, idleTimeLimit: 2.5, fit: false }" class="scale-85"></Asciinema></RenderWhen>
+<RenderWhen context="main"><Asciinema src="casts/triangles/pypy.cast" :playerProps="{speed: 2.5, idleTimeLimit: 2.5, fit: false }" class="scale-80"></Asciinema></RenderWhen>
 
 
 ---
@@ -560,7 +560,7 @@ hideInToc: true
 
 ## <carbon-arrow-right />  fibonacci (baseline: 31.9s)
 
-<RenderWhen context="main"><Asciinema src="casts/fibonacci/rs.cast" :playerProps="{speed: 3, idleTimeLimit: 2, fit: false }" class="scale-85"></Asciinema></RenderWhen>
+<RenderWhen context="main"><Asciinema src="casts/fibonacci/rs.cast" :playerProps="{speed: 3, idleTimeLimit: 2, fit: false }" class="scale-80"></Asciinema></RenderWhen>
 
 
 ---
@@ -571,7 +571,7 @@ hideInToc: true
 
 ## <carbon-arrow-right />  triangles (baseline: 133.9s)
 
-<RenderWhen context="main"><Asciinema src="casts/triangles/rs.cast" :playerProps="{speed: 3, idleTimeLimit: 2.5, fit: false }" class="scale-85"></Asciinema></RenderWhen>
+<RenderWhen context="main"><Asciinema src="casts/triangles/rs.cast" :playerProps="{speed: 3, idleTimeLimit: 2.5, fit: false }" class="scale-80"></Asciinema></RenderWhen>
 
 
 ---
@@ -736,8 +736,9 @@ hideInToc: true
 # Mojo
 
 ## <carbon-arrow-right />  fibonacci (baseline: $\approx$ 60s)
+<br/>
 
-<RenderWhen context="main"><Asciinema src="casts/mojo_fib.cast" :playerProps="{speed: 1.5, idleTimeLimit: 2, fit: false }" class="scale-85"></Asciinema></RenderWhen>
+<RenderWhen context="main"><Asciinema src="casts/mojo_fib.cast" :playerProps="{speed: 1.5, idleTimeLimit: 2, fit: false }" class="scale-90"></Asciinema></RenderWhen>
 
 
 ---
@@ -844,10 +845,11 @@ layout: twocols
 <br/>
 
 </v-clicks>
+
+<v-click>
 <div flex justify-center>
 <img src = "https://media4.giphy.com/media/Fzb4nqyfrTA66u2HOD/giphy.gif" h-56 rounded-lg shadow/>
 </div >
-<v-click>
 
 </v-click>
 
