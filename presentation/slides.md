@@ -71,6 +71,7 @@ hideInToc: true
 - ☁️ Astronomer Certified - DAG Authoring & Airflow
 - ☁️ Snowflake - SnowPro Core
 - 🤪 Fun facts: 🐍, 🦀, 🐓
+- 🫂 Python User Group Belgium <img src="https://dataroots.io/assets/pyug-logo/python-ugb-logo.png" inline-block h-5 animate-spin/>
 - 🤖 Tech lead AI @ <img src="https://dataroots.io/assets/logo/logo-green.png" inline-block h-5/>
 
 <style>
