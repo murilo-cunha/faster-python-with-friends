@@ -5,8 +5,9 @@ addons:
 lineNumbers: false
 themeConfig:
   title: Faster Python with Friends
-  github: github.com/murilo-cunha
+  github: murilo-cunha
   twitter: _murilocunha
+  linkedin: linkedin.com/in/murilo-cunha
 info: >
   ## Faster Python with Friends
 
