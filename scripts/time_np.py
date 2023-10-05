@@ -15,4 +15,5 @@ def np_mean() -> None:
 
 if __name__ == "__main__":
     print("version:", sys.version)  # noqa: T201
-    np_mean()
+    _, time = np_mean()
+    print(f"`numpy` took {time:0.4f} seconds")  # noqa: T201

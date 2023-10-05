@@ -2,6 +2,7 @@
 import argparse
 import sys
 from collections.abc import Callable
+from textwrap import dedent
 
 from py.timing import timer
 
@@ -24,6 +25,7 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser()
     parser.add_argument("num", type=int)
     parser.add_argument("-l", "--lib", choices=["py", "cy", "rs"], required=True)
+    parser.add_argument("-s", "--silent", action="store_true")
     return parser.parse_args()
 
 
@@ -33,10 +35,18 @@ def calc(args: argparse.Namespace, fib: Callable[[int], int]) -> int:
     return fib(args.num)
 
 
-# https://docs.python.org/3/library/contextlib.html#contextlib.redirect_stdout
 if __name__ == "__main__":
-    print("version:", sys.version)  # noqa: T201
     args = parse_args()
     f = import_(args)
-    fib_num = calc(args, f)
-    print(f"{fib_num=}")  # noqa: T201
+    fib_num, time = calc(args, f)
+    if not args.silent:
+        print(  # noqa: T201
+            dedent(
+                f"""\
+                version: {sys.version}
+                `fibonacci` took {time:0.4f} seconds
+                {fib_num=}""",
+            ),
+        )
+    else:
+        print(f"{time:0.4f}")  # noqa: T201

@@ -3,6 +3,7 @@ import argparse
 import sys
 from collections.abc import Callable
 from pathlib import Path
+from textwrap import dedent
 
 from py.timing import timer
 from py.triangles import Graph, load_graph
@@ -26,6 +27,7 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser()
     parser.add_argument("graph", type=Path)
     parser.add_argument("-l", "--lib", choices=["py", "cy", "rs"], required=True)
+    parser.add_argument("-s", "--silent", action="store_true")
     return parser.parse_args()
 
 
@@ -36,9 +38,18 @@ def calc(graph: Graph, calc_triangles: Callable[[Graph], int]) -> int:
 
 
 if __name__ == "__main__":
-    print("version:", sys.version)  # noqa: T201
     args = parse_args()
     f = import_(args)
     nodes = load_graph(args.graph)
-    num_triangles = calc(nodes, f)
-    print(f"{num_triangles=}")  # noqa: T201
+    num_triangles, time = calc(nodes, f)
+    if not args.silent:
+        print(  # noqa: T201
+            dedent(
+                f"""\
+                version: {sys.version}
+                `triangles` took {time:0.4f} seconds
+                {num_triangles=}""",
+            ),
+        )
+    else:
+        print(f"{time:0.4f}")  # noqa: T201

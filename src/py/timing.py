@@ -13,7 +13,6 @@ def timer(f: Callable) -> Callable:
         start = time.perf_counter()
         result = f(*args, **kwargs)
         end = time.perf_counter()
-        print(f"`{f.__name__}` took {end - start:0.4f} seconds")  # noqa: T201
-        return result
+        return (result, end - start)
 
     return wrapper
