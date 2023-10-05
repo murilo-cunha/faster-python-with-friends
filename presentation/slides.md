@@ -291,7 +291,7 @@ hideInToc: true
 	- (Much) faster
     - Little to no overhead
 - Cons
-    - No packages, only apps
+    - Cannot ship compiled binaries
 	- Probably not worth it for short scripts
     - Lags behing CPython versions
     - [Doesn't play nice with C extensions](https://stackoverflow.com/questions/67927205/why-is-pypy3-slower-than-python)
@@ -399,11 +399,10 @@ layout: twocols
 
 <v-clicks>
 
-- [Cython 3.0 recently released!](https://github.com/cython/cython/milestone/58) 🎉
+- Still under development <carbon-arrow-right/> [Cython 3.0!](https://github.com/cython/cython/milestone/58) 🎉
 - Transpile Python to C extensions (that can be used in Python again)
 - Aims to be a superset of Python
 	- `cdef`, `cimport`, ...
-- Also possible to [augment `.py` with Cython types](https://cython.readthedocs.io/en/latest/src/tutorial/pure.html?highlight=526#augmenting-pxd)
 - Allows [bypassing the GIL](https://cython.readthedocs.io/en/latest/src/tutorial/pure.html?highlight=526#managing-the-global-interpreter-lock)
 - Has [limitations](https://cython.readthedocs.io/en/latest/src/userguide/limitations.html#cython-limitations)
 
@@ -879,26 +878,36 @@ layout: twocols
 <v-clicks>
 
 - Why not just write in Rust then?
-<p><carbon-arrow-right /> reality in Python</p>
+	- Python for most, friends when needed <carbon-arrow-right /> reality in Python
+</v-clicks>
 
 <br/>
 
+<v-clicks>
+
+- Never-ending conversation
+- Next steps?
+	- Numba?
+  	- Pybind11?
+  	- Codon?
+    - Micropython?
+  	- Python 3.13 nogil?
+  	- ...
+<p><carbon-arrow-right /> Would you like to contribute?</p>
 </v-clicks>
-
-<v-click>
-<div flex justify-center>
-<img src = "https://media4.giphy.com/media/Fzb4nqyfrTA66u2HOD/giphy.gif" h-56 rounded-lg shadow/>
-</div >
-
-</v-click>
-
-
 
 <style>
 li:not(li:first-child) {
   margin-top: 0;
 }
 </style>
+
+
+---
+
+<div h-100 flex justify-center items-center>
+<img src = "https://media4.giphy.com/media/Fzb4nqyfrTA66u2HOD/giphy.gif" rounded-lg shadow/>
+</div >
 
 
 ---
