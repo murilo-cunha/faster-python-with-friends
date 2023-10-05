@@ -175,7 +175,9 @@ hideInToc: true
 
 ## <carbon-arrow-right />  fibonacci
 
+<div rounded max-h-100 overflow-hidden focus-within:overflow-visible>
 <Asciinema src="/casts/fibonacci/py310.cast" :playerProps="{speed: 2.5, idleTimeLimit: 2, fit: false, terminalFontFamily: 'MesloLGS NF' }" scale-80 />
+</div>
 
 
 ---
@@ -186,7 +188,9 @@ hideInToc: true
 
 ## <carbon-arrow-right />  triangles
 
+<div rounded max-h-100 overflow-hidden focus-within:overflow-visible>
 <Asciinema src="/casts/triangles/py310.cast" :playerProps="{speed: 3, idleTimeLimit: 2, fit: false, terminalFontFamily: 'MesloLGS NF' }" scale-80 />
+</div>
 
 
 ---
@@ -242,7 +246,9 @@ hideInToc: true
 
 ## <carbon-arrow-right />  fibonacci (baseline: 31.9s)
 
+<div rounded max-h-100 overflow-hidden focus-within:overflow-visible>
 <Asciinema src="/casts/fibonacci/py311.cast" :playerProps="{speed: 4, idleTimeLimit: 2, fit: false, terminalFontFamily: 'MesloLGS NF' }" scale-80 />
+</div>
 
 
 ---
@@ -253,7 +259,9 @@ hideInToc: true
 
 ## <carbon-arrow-right />  triangles (baseline: 133.9s)
 
+<div rounded max-h-100 overflow-hidden focus-within:overflow-visible>
 <Asciinema src="/casts/triangles/py311.cast" :playerProps="{speed: 4, idleTimeLimit: 2, fit: false, terminalFontFamily: 'MesloLGS NF' }" scale-80 />
+</div>
 
 
 ---
@@ -263,7 +271,10 @@ hideInToc: true
 
 <br/>
 
+<div rounded max-h-95 overflow-hidden focus-within:overflow-visible>
 <Asciinema src="/casts/py311.cast" :playerProps="{speed: 2, idleTimeLimit: 2, fit: false, terminalFontFamily: 'MesloLGS NF' }" />
+</div>
+
 
 ---
 
@@ -316,7 +327,9 @@ def np_mean() -> None:
         _ = np.mean(vv)
 ```
 
+<div rounded max-h-65 overflow-hidden focus-within:overflow-visible>
 <Asciinema src="/casts/numpy.cast" :playerProps="{speed: 4, idleTimeLimit: 2.5 }" scale-85 />
+</div>
 
 <!--
 # Pypy
@@ -358,7 +371,9 @@ hideInToc: true
 
 ## <carbon-arrow-right />  fibonacci (baseline: 31.9s)
 
+<div rounded max-h-100 overflow-hidden focus-within:overflow-visible>
 <Asciinema src="/casts/fibonacci/pypy.cast" :playerProps="{speed: 3, idleTimeLimit: 2, fit: false, terminalFontFamily: 'MesloLGS NF' }" scale-80 />
+</div>
 
 
 ---
@@ -369,7 +384,9 @@ hideInToc: true
 
 ## <carbon-arrow-right />  triangles (baseline: 133.9s)
 
+<div rounded max-h-100 overflow-hidden focus-within:overflow-visible>
 <Asciinema src="/casts/triangles/pypy.cast" :playerProps="{speed: 2.5, idleTimeLimit: 2.5, fit: false, terminalFontFamily: 'MesloLGS NF' }" scale-80 />
+</div>
 
 
 ---
@@ -458,7 +475,9 @@ hideInToc: true
 
 ## <carbon-arrow-right />  fibonacci (baseline: 31.9s)
 
+<div rounded max-h-100 overflow-hidden focus-within:overflow-visible>
 <Asciinema src="/casts/fibonacci/cy.cast" :playerProps="{speed: 2.5, idleTimeLimit: 2, fit: false, terminalFontFamily: 'MesloLGS NF' }" scale-80 />
+</div>
 
 
 ---
@@ -469,7 +488,9 @@ hideInToc: true
 
 ## <carbon-arrow-right />  triangles (baseline: 133.9s)
 
+<div rounded max-h-100 overflow-hidden focus-within:overflow-visible>
 <Asciinema src="/casts/triangles/cy.cast" :playerProps="{speed: 3, idleTimeLimit: 2, fit: false, terminalFontFamily: 'MesloLGS NF'}" scale-80 />
+</div>
 
 
 ---
@@ -487,7 +508,9 @@ hideInToc: true
 
 ## <carbon-arrow-right />  fibonacci (baseline: 31.9s / cython: 6.8s)
 
+<div rounded max-h-100 overflow-hidden focus-within:overflow-visible>
 <Asciinema src="/casts/fibonacci/mypy.cast" :playerProps="{speed: 2.5, idleTimeLimit: 2, fit: false, terminalFontFamily: 'MesloLGS NF' }" scale-80 />
+</div>
 
 
 ---
@@ -498,7 +521,10 @@ hideInToc: true
 
 ## <carbon-arrow-right />  triangles (baseline: 133.9s / cython: 127.8s)
 
+<div rounded max-h-100 overflow-hidden focus-within:overflow-visible>
 <Asciinema src="/casts/triangles/mypy.cast" :playerProps="{speed: 3, idleTimeLimit: 2.5, fit: false, terminalFontFamily: 'MesloLGS NF' }" scale-80 />
+</div>
+
 
 ---
 layout: twocols
@@ -562,7 +588,9 @@ hideInToc: true
 
 ## <carbon-arrow-right />  fibonacci (baseline: 31.9s)
 
+<div rounded max-h-100 overflow-hidden focus-within:overflow-visible>
 <Asciinema src="/casts/fibonacci/rs.cast" :playerProps="{speed: 3, idleTimeLimit: 2, fit: false, terminalFontFamily: 'MesloLGS NF' }" scale-80 />
+</div>
 
 
 ---
@@ -573,7 +601,9 @@ hideInToc: true
 
 ## <carbon-arrow-right />  triangles (baseline: 133.9s)
 
+<div rounded max-h-100 overflow-hidden focus-within:overflow-visible>
 <Asciinema src="/casts/triangles/rs.cast" :playerProps="{speed: 3, idleTimeLimit: 2.5, fit: false, terminalFontFamily: 'MesloLGS NF' }" scale-80 />
+</div>
 
 
 ---
@@ -745,7 +775,9 @@ hideInToc: true
 ## <carbon-arrow-right />  fibonacci (baseline: $\approx$ 60s)
 <br/>
 
+<div rounded max-h-95 overflow-hidden focus-within:overflow-visible>
 <Asciinema src="/casts/mojo_fib.cast" :playerProps="{speed: 1.5, idleTimeLimit: 2, fit: false, terminalFontFamily: 'MesloLGS NF' }" scale-90 />
+</div>
 
 
 ---
