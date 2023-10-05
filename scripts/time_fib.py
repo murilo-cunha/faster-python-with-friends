@@ -33,6 +33,7 @@ def calc(args: argparse.Namespace, fib: Callable[[int], int]) -> int:
     return fib(args.num)
 
 
+# https://docs.python.org/3/library/contextlib.html#contextlib.redirect_stdout
 if __name__ == "__main__":
     print("version:", sys.version)  # noqa: T201
     args = parse_args()

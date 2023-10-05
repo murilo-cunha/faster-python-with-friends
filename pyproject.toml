@@ -5,7 +5,10 @@ fib     = "python scripts/time_fib.py 40"
 tri     = "python scripts/time_tri.py data/facebook_combined.txt"
 
 [tool.pdm.dev-dependencies]
-dev = ["pre-commit>=3.3.3"]
+dev = [
+    "pre-commit>=3.3.3",
+    "dagger-io>=0.8.7",
+]
 
 [project]
 authors         = [{name = "Murilo Cunha", email = "murilo.k.s.cunha95@gmail.com"}]
