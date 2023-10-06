@@ -175,7 +175,9 @@ hideInToc: true
 
 ## <carbon-arrow-right />  fibonacci
 
+<div rounded max-h-100 overflow-hidden focus-within:overflow-visible>
 <Asciinema src="/casts/fibonacci/py310.cast" :playerProps="{speed: 2.5, idleTimeLimit: 2, fit: false, terminalFontFamily: 'MesloLGS NF' }" scale-80 />
+</div>
 
 
 ---
@@ -186,7 +188,9 @@ hideInToc: true
 
 ## <carbon-arrow-right />  triangles
 
+<div rounded max-h-100 overflow-hidden focus-within:overflow-visible>
 <Asciinema src="/casts/triangles/py310.cast" :playerProps="{speed: 3, idleTimeLimit: 2, fit: false, terminalFontFamily: 'MesloLGS NF' }" scale-80 />
+</div>
 
 
 ---
@@ -216,7 +220,8 @@ hideInToc: true
 - Yes!
 - "Nice to have"s vs. "must have"s
 - Overall trend in Python
-	- [Faster CPython](https://devblogs.microsoft.com/python/python-311-faster-cpython-team/) (3.11)
+	- [Faster CPython](https://devblogs.microsoft.com/python/python-311-faster-cpython-team/) (3.11) <carbon-arrow-right /> [continued in 3.12](https://github.com/faster-cpython/ideas/wiki/Python-3.12-Goals)!
+  	- Python 3.12 `asyncio`, [per-interpreter GIL](https://docs.python.org/3.12/whatsnew/3.12.html#pep-684-a-per-interpreter-gil), ...
   	- No-GIL Python (tentatively 3.13)
 
 </v-clicks>
@@ -242,7 +247,9 @@ hideInToc: true
 
 ## <carbon-arrow-right />  fibonacci (baseline: 31.9s)
 
+<div rounded max-h-100 overflow-hidden focus-within:overflow-visible>
 <Asciinema src="/casts/fibonacci/py311.cast" :playerProps="{speed: 4, idleTimeLimit: 2, fit: false, terminalFontFamily: 'MesloLGS NF' }" scale-80 />
+</div>
 
 
 ---
@@ -253,7 +260,9 @@ hideInToc: true
 
 ## <carbon-arrow-right />  triangles (baseline: 133.9s)
 
+<div rounded max-h-100 overflow-hidden focus-within:overflow-visible>
 <Asciinema src="/casts/triangles/py311.cast" :playerProps="{speed: 4, idleTimeLimit: 2, fit: false, terminalFontFamily: 'MesloLGS NF' }" scale-80 />
+</div>
 
 
 ---
@@ -263,7 +272,13 @@ hideInToc: true
 
 <br/>
 
+<div rounded max-h-95 overflow-hidden focus-within:overflow-visible>
 <Asciinema src="/casts/py311.cast" :playerProps="{speed: 2, idleTimeLimit: 2, fit: false, terminalFontFamily: 'MesloLGS NF' }" />
+</div>
+
+<!--
+https://docs.python.org/3/whatsnew/3.11.html#pep-659-specializing-adaptive-interpreter
+-->
 
 ---
 
@@ -280,7 +295,7 @@ hideInToc: true
 	- (Much) faster
     - Little to no overhead
 - Cons
-    - No packages, only apps
+    - Cannot ship compiled binaries
 	- Probably not worth it for short scripts
     - Lags behing CPython versions
     - [Doesn't play nice with C extensions](https://stackoverflow.com/questions/67927205/why-is-pypy3-slower-than-python)
@@ -316,7 +331,9 @@ def np_mean() -> None:
         _ = np.mean(vv)
 ```
 
+<div rounded max-h-65 overflow-hidden focus-within:overflow-visible>
 <Asciinema src="/casts/numpy.cast" :playerProps="{speed: 4, idleTimeLimit: 2.5 }" scale-85 />
+</div>
 
 <!--
 # Pypy
@@ -358,7 +375,9 @@ hideInToc: true
 
 ## <carbon-arrow-right />  fibonacci (baseline: 31.9s)
 
+<div rounded max-h-100 overflow-hidden focus-within:overflow-visible>
 <Asciinema src="/casts/fibonacci/pypy.cast" :playerProps="{speed: 3, idleTimeLimit: 2, fit: false, terminalFontFamily: 'MesloLGS NF' }" scale-80 />
+</div>
 
 
 ---
@@ -369,8 +388,9 @@ hideInToc: true
 
 ## <carbon-arrow-right />  triangles (baseline: 133.9s)
 
+<div rounded max-h-100 overflow-hidden focus-within:overflow-visible>
 <Asciinema src="/casts/triangles/pypy.cast" :playerProps="{speed: 2.5, idleTimeLimit: 2.5, fit: false, terminalFontFamily: 'MesloLGS NF' }" scale-80 />
-
+</div>
 
 ---
 layout: twocols
@@ -382,11 +402,10 @@ layout: twocols
 
 <v-clicks>
 
-- [Cython 3.0 recently released!](https://github.com/cython/cython/milestone/58) 🎉
+- Still active <carbon-arrow-right/> [Cython 3.0!](https://github.com/cython/cython/milestone/58) 🎉
 - Transpile Python to C extensions (that can be used in Python again)
 - Aims to be a superset of Python
 	- `cdef`, `cimport`, ...
-- Also possible to [augment `.py` with Cython types](https://cython.readthedocs.io/en/latest/src/tutorial/pure.html?highlight=526#augmenting-pxd)
 - Allows [bypassing the GIL](https://cython.readthedocs.io/en/latest/src/tutorial/pure.html?highlight=526#managing-the-global-interpreter-lock)
 - Has [limitations](https://cython.readthedocs.io/en/latest/src/userguide/limitations.html#cython-limitations)
 
@@ -394,7 +413,29 @@ layout: twocols
 
 ::right::
 
-<iframe src="https://cython.readthedocs.io/en/latest/src/quickstart/cythonize.html#typing-variables" class="h-sm w-sm rounded shadow"/>
+```python
+def integrate_f(a: cython.double, b: cython.double, N: cython.int):
+    i: cython.int
+    s: cython.double
+    dx: cython.double
+    s = 0
+    dx = (b - a) / N
+    for i in range(N):
+        s += f(a + i * dx)
+    return s * dx
+```
+
+```python
+def integrate_f(double a, double b, int N):
+    cdef int i
+    cdef double s
+    cdef double dx
+    s = 0
+    dx = (b - a) / N
+    for i in range(N):
+        s += f(a + i * dx)
+    return s * dx
+```
 
 
 ---
@@ -458,7 +499,9 @@ hideInToc: true
 
 ## <carbon-arrow-right />  fibonacci (baseline: 31.9s)
 
+<div rounded max-h-100 overflow-hidden focus-within:overflow-visible>
 <Asciinema src="/casts/fibonacci/cy.cast" :playerProps="{speed: 2.5, idleTimeLimit: 2, fit: false, terminalFontFamily: 'MesloLGS NF' }" scale-80 />
+</div>
 
 
 ---
@@ -469,7 +512,9 @@ hideInToc: true
 
 ## <carbon-arrow-right />  triangles (baseline: 133.9s)
 
+<div rounded max-h-100 overflow-hidden focus-within:overflow-visible>
 <Asciinema src="/casts/triangles/cy.cast" :playerProps="{speed: 3, idleTimeLimit: 2, fit: false, terminalFontFamily: 'MesloLGS NF'}" scale-80 />
+</div>
 
 
 ---
@@ -487,7 +532,9 @@ hideInToc: true
 
 ## <carbon-arrow-right />  fibonacci (baseline: 31.9s / cython: 6.8s)
 
+<div rounded max-h-100 overflow-hidden focus-within:overflow-visible>
 <Asciinema src="/casts/fibonacci/mypy.cast" :playerProps="{speed: 2.5, idleTimeLimit: 2, fit: false, terminalFontFamily: 'MesloLGS NF' }" scale-80 />
+</div>
 
 
 ---
@@ -498,7 +545,10 @@ hideInToc: true
 
 ## <carbon-arrow-right />  triangles (baseline: 133.9s / cython: 127.8s)
 
+<div rounded max-h-100 overflow-hidden focus-within:overflow-visible>
 <Asciinema src="/casts/triangles/mypy.cast" :playerProps="{speed: 3, idleTimeLimit: 2.5, fit: false, terminalFontFamily: 'MesloLGS NF' }" scale-80 />
+</div>
+
 
 ---
 layout: twocols
@@ -511,7 +561,7 @@ layout: twocols
 
 - Binding $\approx$ integrate different languages
 - <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/ISO_C%2B%2B_Logo.svg/1822px-ISO_C%2B%2B_Logo.svg.png" h-7 inline-block /> <carbon-arrows-horizontal /> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/1869px-Python-logo-notext.svg.png" h-7 inline-block />
-	- <img src="https://ww1.freelogovectors.net/wp-content/uploads/2018/07/tensorflow-logo.png" h-6 inline-block />
+	- <img src="https://www.gstatic.com/tf_blog/images/tf_lockup.svg" h-8 inline-block />
     - <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/PyTorch_logo_black.svg/2560px-PyTorch_logo_black.svg.png" h-6 inline-block />
 - <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Rust_programming_language_black_logo.svg/1024px-Rust_programming_language_black_logo.svg.png" h-7 inline-block /> <carbon-arrows-horizontal /> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/1869px-Python-logo-notext.svg.png" h-7 inline-block />
 	- <img src="https://raw.githubusercontent.com/pola-rs/polars-static/master/logos/polars_github_logo_rect_dark_name.svg" h-7 rounded inline-block />
@@ -562,7 +612,9 @@ hideInToc: true
 
 ## <carbon-arrow-right />  fibonacci (baseline: 31.9s)
 
+<div rounded max-h-100 overflow-hidden focus-within:overflow-visible>
 <Asciinema src="/casts/fibonacci/rs.cast" :playerProps="{speed: 3, idleTimeLimit: 2, fit: false, terminalFontFamily: 'MesloLGS NF' }" scale-80 />
+</div>
 
 
 ---
@@ -573,7 +625,9 @@ hideInToc: true
 
 ## <carbon-arrow-right />  triangles (baseline: 133.9s)
 
+<div rounded max-h-100 overflow-hidden focus-within:overflow-visible>
 <Asciinema src="/casts/triangles/rs.cast" :playerProps="{speed: 3, idleTimeLimit: 2.5, fit: false, terminalFontFamily: 'MesloLGS NF' }" scale-80 />
+</div>
 
 
 ---
@@ -597,7 +651,7 @@ layout: twocols
 - [Very early stages](https://docs.modular.com/mojo/roadmap.html#sharp-edges)
 	- No [comprehensions](https://docs.modular.com/mojo/roadmap.html#no-list-or-dict-comprehensions), `dict`, `kwargs`, `class`, etc.
 - [Integrates with Python](https://docs.modular.com/mojo/programming-manual.html#python-integration)
-- Now you can [download it](https://www.modular.com/mojo)!
+- You can [try it yourself](https://www.modular.com/mojo)!
 
 </v-clicks>
 
@@ -745,7 +799,9 @@ hideInToc: true
 ## <carbon-arrow-right />  fibonacci (baseline: $\approx$ 60s)
 <br/>
 
+<div rounded max-h-95 overflow-hidden focus-within:overflow-visible>
 <Asciinema src="/casts/mojo_fib.cast" :playerProps="{speed: 1.5, idleTimeLimit: 2, fit: false, terminalFontFamily: 'MesloLGS NF' }" scale-90 />
+</div>
 
 
 ---
@@ -785,7 +841,7 @@ layouit: twocols
 <v-click>
 
 ```bash
-...
+/some/cpp/file.cpp: ...
 Assertion ... failed.
 Please submit a bug report to ...
 ```
@@ -833,40 +889,49 @@ layout: twocols
   5. Bindings (PyO3)
   6. Mojo*
 
-
 </v-clicks>
 
-::right::
-
-<v-click>
-
-
-
+<v-click at=18>
+<p><carbon-arrow-right /> Would you like to contribute?</p>
 </v-click>
+
+
+::right::
 
 <v-clicks>
 
 - Why not just write in Rust then?
-<p><carbon-arrow-right /> reality in Python</p>
+	- Python for most, friends when needed <carbon-arrow-right /> reality in Python
+</v-clicks>
 
 <br/>
 
+<v-clicks depth=2>
+
+- Never-ending conversation <carbon-arrow-right/> next steps?
+	- Numba?
+  	- Pybind11?
+  	- Codon?
+    - Micropython?
+    - Pyston?
+    - RustPython?
+  	- Python 3.13 nogil?
+  	- ...
 </v-clicks>
-
-<v-click>
-<div flex justify-center>
-<img src = "https://media4.giphy.com/media/Fzb4nqyfrTA66u2HOD/giphy.gif" h-56 rounded-lg shadow/>
-</div >
-
-</v-click>
-
-
 
 <style>
 li:not(li:first-child) {
   margin-top: 0;
 }
 </style>
+
+
+---
+
+<br/>
+<div h-100 flex justify-center items-center>
+<img src = "https://media4.giphy.com/media/Fzb4nqyfrTA66u2HOD/giphy.gif" rounded-lg shadow scale-95/>
+</div >
 
 
 ---
