@@ -1,19 +1,21 @@
 """Do benchmark with multiple environments."""
-import anyio
+import sys
 
-from benchmarking.common import Run, benchmark
+import anyio
+import dagger
+from common import Run, benchmark
 
 runs = (
     Run(
         docker="python:3.10-slim-buster",
         setup=[],
-        entrypoint=["python", "scripts/time_fib.py", "40", "-l", "py"],
+        entrypoint=["python", "scripts/time_fib.py", "10", "-l", "py"],
         output_file="python310",
     ),
     Run(
         docker="python:3.11-slim-buster",
         setup=[],
-        entrypoint=["python", "scripts/time_fib.py", "40", "-l", "py"],
+        entrypoint=["python", "scripts/time_fib.py", "10", "-l", "py"],
         output_file="python311",
     ),
     Run(
@@ -45,8 +47,9 @@ runs = (
 
 async def main() -> None:
     """Benchmark using dagger pipelines."""
-    for run in runs:
-        benchmark(run)
+    async with dagger.Connection(dagger.Config(log_output=sys.stderr)) as client:
+        for run in runs:
+            await benchmark(client, run)
 
 
 anyio.run(main)
