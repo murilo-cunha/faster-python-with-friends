@@ -220,7 +220,8 @@ hideInToc: true
 - Yes!
 - "Nice to have"s vs. "must have"s
 - Overall trend in Python
-	- [Faster CPython](https://devblogs.microsoft.com/python/python-311-faster-cpython-team/) (3.11)
+	- [Faster CPython](https://devblogs.microsoft.com/python/python-311-faster-cpython-team/) (3.11) <carbon-arrow-right /> [continued in 3.12](https://github.com/faster-cpython/ideas/wiki/Python-3.12-Goals)!
+  	- Python 3.12 `asyncio`, [per-interpreter GIL](https://docs.python.org/3.12/whatsnew/3.12.html#pep-684-a-per-interpreter-gil), ...
   	- No-GIL Python (tentatively 3.13)
 
 </v-clicks>
@@ -275,6 +276,9 @@ hideInToc: true
 <Asciinema src="/casts/py311.cast" :playerProps="{speed: 2, idleTimeLimit: 2, fit: false, terminalFontFamily: 'MesloLGS NF' }" />
 </div>
 
+<!--
+https://docs.python.org/3/whatsnew/3.11.html#pep-659-specializing-adaptive-interpreter
+-->
 
 ---
 
@@ -388,7 +392,6 @@ hideInToc: true
 <Asciinema src="/casts/triangles/pypy.cast" :playerProps="{speed: 2.5, idleTimeLimit: 2.5, fit: false, terminalFontFamily: 'MesloLGS NF' }" scale-80 />
 </div>
 
-
 ---
 layout: twocols
 ---
@@ -399,7 +402,7 @@ layout: twocols
 
 <v-clicks>
 
-- Still under development <carbon-arrow-right/> [Cython 3.0!](https://github.com/cython/cython/milestone/58) 🎉
+- Still active <carbon-arrow-right/> [Cython 3.0!](https://github.com/cython/cython/milestone/58) 🎉
 - Transpile Python to C extensions (that can be used in Python again)
 - Aims to be a superset of Python
 	- `cdef`, `cimport`, ...
@@ -410,7 +413,29 @@ layout: twocols
 
 ::right::
 
-<iframe src="https://cython.readthedocs.io/en/latest/src/quickstart/cythonize.html#typing-variables" class="h-sm w-sm rounded shadow"/>
+```python
+def integrate_f(a: cython.double, b: cython.double, N: cython.int):
+    i: cython.int
+    s: cython.double
+    dx: cython.double
+    s = 0
+    dx = (b - a) / N
+    for i in range(N):
+        s += f(a + i * dx)
+    return s * dx
+```
+
+```python
+def integrate_f(double a, double b, int N):
+    cdef int i
+    cdef double s
+    cdef double dx
+    s = 0
+    dx = (b - a) / N
+    for i in range(N):
+        s += f(a + i * dx)
+    return s * dx
+```
 
 
 ---
@@ -536,7 +561,7 @@ layout: twocols
 
 - Binding $\approx$ integrate different languages
 - <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/ISO_C%2B%2B_Logo.svg/1822px-ISO_C%2B%2B_Logo.svg.png" h-7 inline-block /> <carbon-arrows-horizontal /> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/1869px-Python-logo-notext.svg.png" h-7 inline-block />
-	- <img src="https://ww1.freelogovectors.net/wp-content/uploads/2018/07/tensorflow-logo.png" h-6 inline-block />
+	- <img src="https://www.gstatic.com/tf_blog/images/tf_lockup.svg" h-8 inline-block />
     - <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/PyTorch_logo_black.svg/2560px-PyTorch_logo_black.svg.png" h-6 inline-block />
 - <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Rust_programming_language_black_logo.svg/1024px-Rust_programming_language_black_logo.svg.png" h-7 inline-block /> <carbon-arrows-horizontal /> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/1869px-Python-logo-notext.svg.png" h-7 inline-block />
 	- <img src="https://raw.githubusercontent.com/pola-rs/polars-static/master/logos/polars_github_logo_rect_dark_name.svg" h-7 rounded inline-block />
@@ -626,7 +651,7 @@ layout: twocols
 - [Very early stages](https://docs.modular.com/mojo/roadmap.html#sharp-edges)
 	- No [comprehensions](https://docs.modular.com/mojo/roadmap.html#no-list-or-dict-comprehensions), `dict`, `kwargs`, `class`, etc.
 - [Integrates with Python](https://docs.modular.com/mojo/programming-manual.html#python-integration)
-- Now you can [download it](https://www.modular.com/mojo)!
+- You can [try it yourself](https://www.modular.com/mojo)!
 
 </v-clicks>
 
@@ -816,7 +841,7 @@ layouit: twocols
 <v-click>
 
 ```bash
-...
+/some/cpp/file.cpp: ...
 Assertion ... failed.
 Please submit a bug report to ...
 ```
@@ -864,16 +889,14 @@ layout: twocols
   5. Bindings (PyO3)
   6. Mojo*
 
-
 </v-clicks>
 
-::right::
-
-<v-click>
-
-
-
+<v-click at=18>
+<p><carbon-arrow-right /> Would you like to contribute?</p>
 </v-click>
+
+
+::right::
 
 <v-clicks>
 
@@ -883,17 +906,17 @@ layout: twocols
 
 <br/>
 
-<v-clicks>
+<v-clicks depth=2>
 
-- Never-ending conversation
-- Next steps?
+- Never-ending conversation <carbon-arrow-right/> next steps?
 	- Numba?
   	- Pybind11?
   	- Codon?
     - Micropython?
+    - Pyston?
+    - RustPython?
   	- Python 3.13 nogil?
   	- ...
-<p><carbon-arrow-right /> Would you like to contribute?</p>
 </v-clicks>
 
 <style>
@@ -905,8 +928,9 @@ li:not(li:first-child) {
 
 ---
 
+<br/>
 <div h-100 flex justify-center items-center>
-<img src = "https://media4.giphy.com/media/Fzb4nqyfrTA66u2HOD/giphy.gif" rounded-lg shadow/>
+<img src = "https://media4.giphy.com/media/Fzb4nqyfrTA66u2HOD/giphy.gif" rounded-lg shadow scale-95/>
 </div >
 
 
