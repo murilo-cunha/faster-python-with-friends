@@ -60,17 +60,16 @@ hideInToc: true
 
 # About me
 
-<br/>
-
 - ✉️ murilo@dataroots.io
 - 🇧🇷 → 🇧🇪: Brazilian @ Belgium
 - 🤓 B.Sc. in Mechanical Engineering @PNW
 - 👨‍🎓 M.Sc. in Artificial Intelligence @KUL
-- ☁️ GCP - (Data &) ML Engineer
-- ☁️ AWS Certified - Machine Learning
-- ☁️ Hashicorp Certified - Terraform
-- ☁️ Astronomer Certified - DAG Authoring & Airflow
-- ☁️ Snowflake - SnowPro Core
+- <img src="https://www.gend.co/hs-fs/hubfs/gcp-logo-cloud.png?width=730&name=gcp-logo-cloud.png" inline-block h-4/> Professional Data & ML Engineer
+- <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Amazon_Web_Services_Logo.svg/1024px-Amazon_Web_Services_Logo.svg.png" inline-block h-3 /> Machine Learning Specialty
+- <img src="https://upload.wikimedia.org/wikipedia/commons/8/80/HashiCorp_Logo_no_text.png" inline-block h-5/> Terraform Associate
+- <img src="https://www.astronomer.io/monogram/astronomer-monogram-RGB-600px.png" inline-block h-5/> DAG Authoring & Airflow
+- <img src="https://appsembler.com/wp-content/uploads/2022/02/bug-sno-blue.png" inline-block h-5/> SnowPro Core
+- <img src="https://cdn.worldvectorlogo.com/logos/prefect-1.svg" inline-block m-1 h-5/> Prefect Associate
 - 🤪 Fun facts: 🐍, 🦀, 🐓
 - 🫂 Python User Group Belgium <img src="https://dataroots.io/assets/pyug-logo/python-ugb-logo.png" inline-block h-5 animate-spin/>
 - 🤖 Tech lead AI @ <img src="https://dataroots.io/assets/logo/logo-green.png" inline-block h-5/>
