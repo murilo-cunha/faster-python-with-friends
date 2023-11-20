@@ -17,10 +17,8 @@ requires-python = ">=3.10"
 version         = "0.0.0"
 
 [project.optional-dependencies]
-np = ["numpy>=1.25.1"]
-benchmark = [
-    "dagger-io>=0.9.3",
-]
+benchmark = ["dagger-io>=0.9.3"]
+np        = ["numpy>=1.25.1"]
 
 [tool.ruff]
 fix            = true
