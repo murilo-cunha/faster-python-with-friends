@@ -47,7 +47,7 @@ def _mypyc(
 ) -> dagger.Container:
     """Run benchmark on Mypyc module."""
     return _run_script(
-        container.with_exec(["mypyc", "src/py"]),
+        container.with_exec(["cd", "src/"]).with_exec(["mypyc", "src/py", "--verbose"]),
         sh=SCRIPT.format(lib="py", output_file=output_file),
         use_cache=use_cache,
     )
@@ -70,9 +70,13 @@ def _python(
 async def main() -> None:
     """Do benchmark."""
     alternatives = {
-        "python:3.10-bookworm": [_python, _mypyc, _cython],
-        "python:3.11-bookworm": [_python],
-        "pypy:3.10-bookworm": [_python],
+        "python:3.10-bookworm": [
+            # _python,
+            _mypyc,
+            # _cython
+        ],
+        # "python:3.11-bookworm": [_python],
+        # "pypy:3.10-bookworm": [_python],
     }
     async with dagger.Connection(dagger.Config(log_output=sys.stderr)) as client:
         # Could also local with
@@ -92,7 +96,8 @@ async def main() -> None:
                         client.host().directory("scripts"),
                     )
                     .with_file(
-                        "/app/pyproject.toml", client.host().file("pyproject.toml")
+                        "/app/pyproject.toml",
+                        client.host().file("pyproject.toml"),
                     )
                     .with_workdir("app")
                     .with_exec(["pip", "install", "."])
